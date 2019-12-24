@@ -1,4 +1,4 @@
-package com.example.group4;
+package com.example.group4.web;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
