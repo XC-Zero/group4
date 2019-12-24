@@ -10,7 +10,7 @@ import org.springframework.web.bind.annotation.RestController;
 public class nyController {
 
 
-    @GetMapping
+    @GetMapping("/addstuInfo")
     @ApiOperation(value = "添加学生信息")
     @ApiImplicitParams({
             @ApiImplicitParam(name = "name", value = "姓名", paramType = "query", dataType = "String", required = true),
