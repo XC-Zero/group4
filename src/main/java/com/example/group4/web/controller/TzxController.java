@@ -7,7 +7,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
-public class tzxController {
+public class TzxController {
     @PostMapping("/borrow")
     public Message borrow(Book book){
         int id = book.getId();
