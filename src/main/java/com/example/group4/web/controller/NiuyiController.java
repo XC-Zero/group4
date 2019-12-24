@@ -7,7 +7,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 @RestController
 @Api(description = "添加学生信息")
-public class nyController {
+public class NiuyiController {
 
 
     @GetMapping("/addStuInfo")
