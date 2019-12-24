@@ -9,7 +9,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
-public class tzxController {
+public class TzxController {
     @PostMapping("/borrow")
     @ApiOperation(value = "借书")
     public Message borrow(Book book){
