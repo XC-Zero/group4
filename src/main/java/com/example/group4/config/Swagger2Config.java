@@ -33,7 +33,7 @@ public class Swagger2Config {
 
     private ApiInfo apiInfo() {
         return new ApiInfoBuilder()
-                .title("gruop4")
+                .title("group4")
                 .description("兰州理工大学，http://www.gsut.edu.cn/")
                 .termsOfServiceUrl("http://www.gsut.edu.cn/")
                 .version("1.5")
