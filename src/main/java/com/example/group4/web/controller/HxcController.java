@@ -1,8 +1,13 @@
 package com.example.group4.web.controller;
 
-public class HxcController {
-    public static void main(String[] args){
-        System.out.println("hxc建的类");
+import com.example.group4.Utils.Message;
+import org.springframework.web.bind.annotation.RestController;
 
+@RestController
+public class HxcController {
+
+    public Message lend(){
+        Message message=new Message();
+        return  message;
     }
 }
