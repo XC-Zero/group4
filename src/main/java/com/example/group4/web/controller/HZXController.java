@@ -2,7 +2,7 @@ package com.example.group4.web.controller;
 
 import com.example.group4.Bean.Message;
 import com.example.group4.Utils.MessageUtil;
-import com.example.group4.Bean.StudentUtils;
+import com.example.group4.Bean.Student;
 import io.swagger.annotations.ApiImplicitParam;
 import io.swagger.annotations.ApiOperation;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -30,7 +30,7 @@ public class HZXController {
     }
 
     @GetMapping("/InquireStu")
-    public StudentUtils InquireStu(int id){
-       return new StudentUtils();
+    public Student InquireStu(int id){
+       return new Student();
     }
 }

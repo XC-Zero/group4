@@ -1,6 +1,6 @@
 package com.example.group4.web.controller;
 
-import com.example.group4.Bean.StudentUtils;
+import com.example.group4.Bean.Student;
 import io.swagger.annotations.*;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -21,8 +21,8 @@ public class NiuyiController {
             @ApiImplicitParam(name = "StudentId", value = "学号", paramType = "query", dataType = "int", required = true)
 
     })
-    public StudentUtils addStudent(String name, int age, String email, String password, int PhoneNumber, int StudentId) {
-        StudentUtils studentUtils = new StudentUtils();
+    public Student addStudent(String name, int age, String email, String password, int PhoneNumber, int StudentId) {
+        Student studentUtils = new Student();
         studentUtils.setName(name);
         studentUtils.setAge(age);
         studentUtils.setEmail(email);
