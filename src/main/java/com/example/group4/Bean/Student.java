@@ -1,6 +1,6 @@
-package com.example.group4.Utils;
+package com.example.group4.Bean;
 
-public class StudentUtils {
+public class Student {
     public String getName() {
         return Name;
     }

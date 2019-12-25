@@ -1,5 +1,7 @@
 package com.example.group4.Utils;
 
+import com.example.group4.Bean.Message;
+
 import java.util.Date;
 
 /**
@@ -16,7 +18,7 @@ public class MessageUtil {
      * @param <E>
      * @return
      */
-    public static <E>Message<E> success(E o){
+    public static <E> Message<E> success(E o){
         return new Message<>(200, "success", o, new Date().getTime());
     }
 
