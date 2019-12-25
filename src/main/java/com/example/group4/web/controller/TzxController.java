@@ -7,10 +7,12 @@ import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
 @Api(description = "陶中翔的Controller")
+@RequestMapping("/tzx")
 public class TzxController {
     @PostMapping("/borrow")
     @ApiOperation(value = "借阅图书")
