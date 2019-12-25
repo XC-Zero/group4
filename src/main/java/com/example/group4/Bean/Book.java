@@ -1,4 +1,4 @@
-package com.example.group4.Utils;
+package com.example.group4.Bean;
 
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiModel;

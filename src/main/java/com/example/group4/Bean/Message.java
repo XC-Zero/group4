@@ -1,4 +1,4 @@
-package com.example.group4.Utils;
+package com.example.group4.Bean;
 
 /**
  * @program: app01
