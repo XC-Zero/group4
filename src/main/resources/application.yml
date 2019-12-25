@@ -1,0 +1,10 @@
+server:
+  port:9999
+spring:
+  datasource:
+    url: jdbc:mysql://test-group4.mysql.rds.aliyuncs.com
+    driver-class-name: com.mysql.jdbc.Driver
+    data-username: group4
+    data-password: CJMcjm136466!
+
+
