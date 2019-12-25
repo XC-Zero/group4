@@ -3,38 +3,34 @@ package com.example.group4.Bean;
 import java.io.Serializable;
 
 public class Student implements Serializable {
+    private Integer studentId;
 
+    private String name;
+
+    private String email;
+
+    private Integer phonenumber;
+
+    private Integer age;
+
+    private String password;
+
+    private static final long serialVersionUID = 1L;
+
+    public Integer getStudentId() {
+        return studentId;
+    }
+
+    public void setStudentId(Integer studentId) {
+        this.studentId = studentId;
+    }
 
     public String getName() {
         return name;
     }
 
     public void setName(String name) {
-        this.name = name;
-    }
-
-    public int getStudent_id() {
-        return student_id;
-    }
-
-    public void setStudent_id(int student_id) {
-        this.student_id = student_id;
-    }
-
-    public String getPassword() {
-        return Password;
-    }
-
-    public void setPassword(String password) {
-        Password = password;
-    }
-
-    public int getAge() {
-        return age;
-    }
-
-    public void setAge(int age) {
-        this.age = age;
+        this.name = name == null ? null : name.trim();
     }
 
     public String getEmail() {
@@ -42,34 +38,47 @@ public class Student implements Serializable {
     }
 
     public void setEmail(String email) {
-        this.email = email;
+        this.email = email == null ? null : email.trim();
     }
 
-    public int getPhoneNumber() {
-        return phoneNumber;
+    public Integer getPhonenumber() {
+        return phonenumber;
     }
 
-    public void setPhoneNumber(int phoneNumber) {
-        this.phoneNumber = phoneNumber;
+    public void setPhonenumber(Integer phonenumber) {
+        this.phonenumber = phonenumber;
+    }
+
+    public Integer getAge() {
+        return age;
+    }
+
+    public void setAge(Integer age) {
+        this.age = age;
+    }
+
+    public String getPassword() {
+        return password;
+    }
+
+    public void setPassword(String password) {
+        this.password = password == null ? null : password.trim();
     }
 
     @Override
     public String toString() {
-        final StringBuffer sb = new StringBuffer("Student{");
-        sb.append("name='").append(name).append('\'');
-        sb.append(", student_id=").append(student_id);
-        sb.append(", Password='").append(Password).append('\'');
+        StringBuilder sb = new StringBuilder();
+        sb.append(getClass().getSimpleName());
+        sb.append(" [");
+        sb.append("Hash = ").append(hashCode());
+        sb.append(", studentId=").append(studentId);
+        sb.append(", name=").append(name);
+        sb.append(", email=").append(email);
+        sb.append(", phonenumber=").append(phonenumber);
         sb.append(", age=").append(age);
-        sb.append(", email='").append(email).append('\'');
-        sb.append(", phoneNumber=").append(phoneNumber);
-        sb.append('}');
+        sb.append(", password=").append(password);
+        sb.append(", serialVersionUID=").append(serialVersionUID);
+        sb.append("]");
         return sb.toString();
     }
-
-    private String name;
-    private int student_id;
-    private String Password;
-    private int age;
-    private String email;
-    private int phoneNumber;
 }

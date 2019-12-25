@@ -1,6 +1,5 @@
 package com.example.group4.web.controller;
 
-import com.example.group4.Bean.Student;
 import io.swagger.annotations.*;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;
