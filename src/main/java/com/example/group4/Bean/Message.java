@@ -1,5 +1,7 @@
 package com.example.group4.Bean;
 
+import java.io.Serializable;
+
 /**
  * @program: app01
  * @description: 消息类
@@ -7,7 +9,7 @@ package com.example.group4.Bean;
  * @create: 2019-03-13 20:58
  **/
 
-public class Message<T> {
+public class Message<T> implements Serializable {
     public Message() {
     }
 

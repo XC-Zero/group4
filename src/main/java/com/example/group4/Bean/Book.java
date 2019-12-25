@@ -4,10 +4,11 @@ import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 
+import java.io.Serializable;
 import java.util.Date;
 
 @ApiModel
-public class Book {
+public class Book implements Serializable {
     @ApiModelProperty(value = "图书ID",required = true)
     private int id;
     @ApiModelProperty(value = "书名")

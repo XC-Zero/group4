@@ -1,10 +1,9 @@
 server:
-  port:9999
+  port: 9999
 spring:
   datasource:
-    url: jdbc:mysql://test-group4.mysql.rds.aliyuncs.com
-    driver-class-name: com.mysql.jdbc.Driver
-    data-username: group4
-    data-password: CJMcjm136466!
-
+    username: group4
+    password: CJMcjm136466!
+    url: jdbc:mysql://test-group4.mysql.rds.aliyuncs.com:9988/group4?useunicode=true;&characterEncoding=utf8
+    driver-class-name: com.mysql.cj.jdbc.Driver
 
