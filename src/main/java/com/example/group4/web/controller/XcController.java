@@ -4,6 +4,7 @@ import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiImplicitParam;
 import io.swagger.annotations.ApiImplicitParams;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import java.util.Date;
@@ -11,7 +12,7 @@ import java.util.Date;
 @RestController
 @Api(description = "更改向宸的剩余加班时长(寿命)")
 public class XcController {
-    @GetMapping("/Xc")
+    @RequestMapping("/Xc")
 
             @ApiImplicitParam(name = "date", value = "剩余时长(月)", paramType = "query", dataType = "Date", required = true)
 
