@@ -23,7 +23,7 @@ public class Swagger2Config {
     public Docket demoApi() {
         return new Docket(DocumentationType.SWAGGER_2)
                 .select()
-                .apis(RequestHandlerSelectors.basePackage("com.example.group4.web.controller"))
+                .apis(RequestHandlerSelectors.basePackage("com.example.group4.Controller"))
                 .paths(PathSelectors.any())
                 .build()
                 .apiInfo(apiInfo());
