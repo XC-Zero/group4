@@ -7,8 +7,6 @@ public class Clazz implements Serializable {
 
     private String name;
 
-    private String description;
-
     private Integer serveNumber;
 
     private Integer studentNumber;
@@ -16,6 +14,8 @@ public class Clazz implements Serializable {
     private Integer departmentId;
 
     private Integer teacherId;
+
+    private String description;
 
     private static final long serialVersionUID = 1L;
 
@@ -33,14 +33,6 @@ public class Clazz implements Serializable {
 
     public void setName(String name) {
         this.name = name == null ? null : name.trim();
-    }
-
-    public String getDescription() {
-        return description;
-    }
-
-    public void setDescription(String description) {
-        this.description = description == null ? null : description.trim();
     }
 
     public Integer getServeNumber() {
@@ -75,6 +67,14 @@ public class Clazz implements Serializable {
         this.teacherId = teacherId;
     }
 
+    public String getDescription() {
+        return description;
+    }
+
+    public void setDescription(String description) {
+        this.description = description == null ? null : description.trim();
+    }
+
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
@@ -83,11 +83,11 @@ public class Clazz implements Serializable {
         sb.append("Hash = ").append(hashCode());
         sb.append(", id=").append(id);
         sb.append(", name=").append(name);
-        sb.append(", description=").append(description);
         sb.append(", serveNumber=").append(serveNumber);
         sb.append(", studentNumber=").append(studentNumber);
         sb.append(", departmentId=").append(departmentId);
         sb.append(", teacherId=").append(teacherId);
+        sb.append(", description=").append(description);
         sb.append(", serialVersionUID=").append(serialVersionUID);
         sb.append("]");
         return sb.toString();

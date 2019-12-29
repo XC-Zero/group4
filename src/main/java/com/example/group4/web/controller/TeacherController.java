@@ -22,9 +22,16 @@ public class TeacherController {
     @GetMapping("/selectAll")
     @ApiOperation("查询所有")
 public Message findAll(){
-    List<Teacher>list=teacherService.findAll();
-    return MessageUtil.success(list);
+        List<Teacher>list=teacherService.findAll();
+        return MessageUtil.success(list);
 
+    }
 
-}
+    @GetMapping("/selectByAll")
+    @ApiOperation("查询id")
+    public Message findById(int id){
+
+        return MessageUtil.success(teacherService.findById(id));
+
+    }
 }
