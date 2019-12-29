@@ -7,5 +7,6 @@ public class test {
     @Autowired
     ClazzMapper clazzMapper;
     public static void test(){
+        clazzMapper.selectByExample()
     }
 }
