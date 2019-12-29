@@ -81,8 +81,8 @@ public class CourseServiceImpl implements ICourseService {
 
     @Override
     public List<Course> selectByName(String key) throws RuntimeException {
+        key="%"+key+"%";
 
-        CourseExample courseExample=new CourseExample();
         List <Course> Courses=courseEXMapper.selectByName(key);
 
         return Courses;
