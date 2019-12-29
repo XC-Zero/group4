@@ -6,5 +6,5 @@ spring:
     password: CJMcjm136466!
     url: jdbc:mysql://test-group4.mysql.rds.aliyuncs.com:9988/group4_2?useunicode=true;&characterEncoding=utf8
     driver-class-name: com.mysql.cj.jdbc.Driver
-mybatis:
-  mapper-locations: mapper/*Mapper.xml
+#mybatis:
+#  mapper-locations: mapper/*Mapper.xml
