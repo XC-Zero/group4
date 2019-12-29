@@ -47,7 +47,9 @@ public class ClassServiceImpl implements IClassService {
 
     @Override
     public void delMany(int[] ids) throws RuntimeException {
-
+        for (int id : ids) {
+            clazzMapper.deleteByPrimaryKey(id);
+        }
     }
 
     @Override
