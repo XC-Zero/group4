@@ -17,7 +17,7 @@
 		</commentGenerator>
 
 		<!-- 注意！如果要重新生成pojo类，务必改成项目组数据库，用户名密码 -->
-		<jdbcConnection driverClass="com.mysql.cj.jdbc.Driver"
+		<jdbcConnection driverClass="com.mysql.jdbc.Driver"
 			connectionURL="jdbc:mysql://test-group4.mysql.rds.aliyuncs.com:9988/group4_2" userId="group4"
 			password="CJMcjm136466!">
 		</jdbcConnection>

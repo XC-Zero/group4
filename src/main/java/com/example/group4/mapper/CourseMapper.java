@@ -10,6 +10,8 @@ public interface CourseMapper {
 
     int deleteByExample(CourseExample example);
 
+    int deleteByPrimaryKey(Integer id);
+
     int insert(Course record);
 
     int insertSelective(Course record);
@@ -18,9 +20,17 @@ public interface CourseMapper {
 
     List<Course> selectByExample(CourseExample example);
 
+    Course selectByPrimaryKey(Integer id);
+
     int updateByExampleSelective(@Param("record") Course record, @Param("example") CourseExample example);
 
     int updateByExampleWithBLOBs(@Param("record") Course record, @Param("example") CourseExample example);
 
     int updateByExample(@Param("record") Course record, @Param("example") CourseExample example);
+
+    int updateByPrimaryKeySelective(Course record);
+
+    int updateByPrimaryKeyWithBLOBs(Course record);
+
+    int updateByPrimaryKey(Course record);
 }

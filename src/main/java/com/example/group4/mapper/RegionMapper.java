@@ -10,6 +10,8 @@ public interface RegionMapper {
 
     int deleteByExample(RegionExample example);
 
+    int deleteByPrimaryKey(Integer id);
+
     int insert(Region record);
 
     int insertSelective(Region record);
@@ -18,9 +20,17 @@ public interface RegionMapper {
 
     List<Region> selectByExample(RegionExample example);
 
+    Region selectByPrimaryKey(Integer id);
+
     int updateByExampleSelective(@Param("record") Region record, @Param("example") RegionExample example);
 
     int updateByExampleWithBLOBs(@Param("record") Region record, @Param("example") RegionExample example);
 
     int updateByExample(@Param("record") Region record, @Param("example") RegionExample example);
+
+    int updateByPrimaryKeySelective(Region record);
+
+    int updateByPrimaryKeyWithBLOBs(Region record);
+
+    int updateByPrimaryKey(Region record);
 }
