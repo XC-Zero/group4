@@ -48,7 +48,12 @@ public Message findAll(){
         teacherService.saveOrUpdate(teacher);
         return MessageUtil.success();
 
-
+    }
+    @PostMapping("/deleteMore")
+    @ApiOperation("批量删除")
+    public Message deleteS(Teacher teacher){
+        teacherService.saveOrUpdate(teacher);
+        return MessageUtil.success();
 
     }
 
