@@ -1,4 +1,4 @@
-package com.example.group4.service.Impl;
+package com.example.group4.service.impl;
 
 import com.example.group4.bean.Course;
 import com.example.group4.mapper.CourseMapper;
