@@ -60,7 +60,7 @@ public class ClassController {
     @ApiOperation("修改班级信息")
     public Message update(Clazz clazz){
         classService.saveOrUpdate(clazz);
-        return  MessageUtil.success();
+        return  MessageUtil.success() ;
     }
 
     @GetMapping("/search")
