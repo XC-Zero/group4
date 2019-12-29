@@ -11,5 +11,6 @@ public interface ITeacherService {
     List<Teacher> search(String key,String word)throws RuntimeException;
     void saveOrUpdate(Teacher teacher)throws RuntimeException;
     void deleteById(int id)throws RuntimeException;
+    void deleteMore(int [] ids) throws RuntimeException;
 
 }
