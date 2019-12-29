@@ -193,6 +193,4 @@
       region_id = #{regionId,jdbcType=INTEGER}
     where id = #{id,jdbcType=INTEGER}
   </update>
-
-
 </mapper>

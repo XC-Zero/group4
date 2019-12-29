@@ -28,5 +28,4 @@ public interface DepartmentMapper {
 
     int updateByPrimaryKey(Department record);
 
-    List<Department>selectByWord(String word);
 }
