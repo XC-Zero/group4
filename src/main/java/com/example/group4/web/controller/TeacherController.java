@@ -5,6 +5,8 @@ import com.example.group4.service.ITeacherService;
 import com.example.group4.util.Message;
 import com.example.group4.util.MessageUtil;
 import io.swagger.annotations.Api;
+import io.swagger.annotations.ApiImplicitParam;
+import io.swagger.annotations.ApiImplicitParams;
 import io.swagger.annotations.ApiOperation;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -15,7 +17,7 @@ import org.springframework.web.bind.annotation.RestController;
 import java.util.List;
 
 @RestController
-@Api(description = "教师查询")
+@Api(description = "教师管理")
 @RequestMapping("/teacher")
 public class TeacherController {
     @Autowired
@@ -61,6 +63,7 @@ public class TeacherController {
     }
     @GetMapping("/search")
     @ApiOperation("搜索")
+    @ApiImplicitParam(name = "key",paramType = "String",value = "id或name")
     public Message search(String key,String word) {
         //teacherService.search(key,word);
 

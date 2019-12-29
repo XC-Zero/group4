@@ -24,6 +24,7 @@
     <select id="selectName" resultType="com.example.group4.bean.ex.ClazzEX">
         select * from briup_clazz where name like #{name}
     </select>
+
     <select id="selectTeachername" resultType="com.example.group4.bean.ex.ClazzEX">
         select * from briup_clazz where techer_id like #{teacherid}
     </select>
