@@ -10,13 +10,21 @@ public interface OptionsMapper {
 
     int deleteByExample(OptionsExample example);
 
+    int deleteByPrimaryKey(Integer id);
+
     int insert(Options record);
 
     int insertSelective(Options record);
 
     List<Options> selectByExample(OptionsExample example);
 
+    Options selectByPrimaryKey(Integer id);
+
     int updateByExampleSelective(@Param("record") Options record, @Param("example") OptionsExample example);
 
     int updateByExample(@Param("record") Options record, @Param("example") OptionsExample example);
+
+    int updateByPrimaryKeySelective(Options record);
+
+    int updateByPrimaryKey(Options record);
 }
