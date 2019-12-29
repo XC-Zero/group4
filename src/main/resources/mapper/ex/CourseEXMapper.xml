@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper  namespace="com.example.group4.mapper.ex.CourseEXMapper">
+
+<!--    <select id="findAll" resultMap="abn">
+        select * from briup_course
+    </select>
+
+
+    <select id="selectTitleOrAuthor" resultMap="abn">
+        select * from briup_course where author like #{word} or title like #{word}
+
+    </select>
+
+    <select id="selectTitle" resultMap="abn">
+        select * from briup_course where title like #{word}
+    </select>-->
+
+    <select id="selectByName" resultType="com.example.group4.bean.Course">
+        select * from briup_course where name like #{word}
+    </select>
+</mapper>
