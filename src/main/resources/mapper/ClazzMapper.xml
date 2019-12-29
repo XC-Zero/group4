@@ -4,13 +4,11 @@
   <resultMap id="BaseResultMap" type="com.example.group4.bean.Clazz">
     <id column="id" jdbcType="INTEGER" property="id" />
     <result column="name" jdbcType="VARCHAR" property="name" />
+    <result column="description" jdbcType="VARCHAR" property="description" />
     <result column="serve_number" jdbcType="INTEGER" property="serveNumber" />
     <result column="student_number" jdbcType="INTEGER" property="studentNumber" />
     <result column="department_id" jdbcType="INTEGER" property="departmentId" />
     <result column="teacher_id" jdbcType="INTEGER" property="teacherId" />
-  </resultMap>
-  <resultMap extends="BaseResultMap" id="ResultMapWithBLOBs" type="com.example.group4.bean.Clazz">
-    <result column="description" jdbcType="LONGVARCHAR" property="description" />
   </resultMap>
   <sql id="Example_Where_Clause">
     <where>
@@ -71,27 +69,8 @@
     </where>
   </sql>
   <sql id="Base_Column_List">
-    id, name, serve_number, student_number, department_id, teacher_id
+    id, name, description, serve_number, student_number, department_id, teacher_id
   </sql>
-  <sql id="Blob_Column_List">
-    description
-  </sql>
-  <select id="selectByExampleWithBLOBs" parameterType="com.example.group4.bean.ClazzExample" resultMap="ResultMapWithBLOBs">
-    select
-    <if test="distinct">
-      distinct
-    </if>
-    <include refid="Base_Column_List" />
-    ,
-    <include refid="Blob_Column_List" />
-    from briup_clazz
-    <if test="_parameter != null">
-      <include refid="Example_Where_Clause" />
-    </if>
-    <if test="orderByClause != null">
-      order by ${orderByClause}
-    </if>
-  </select>
   <select id="selectByExample" parameterType="com.example.group4.bean.ClazzExample" resultMap="BaseResultMap">
     select
     <if test="distinct">
@@ -106,11 +85,9 @@
       order by ${orderByClause}
     </if>
   </select>
-  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="ResultMapWithBLOBs">
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
     select 
     <include refid="Base_Column_List" />
-    ,
-    <include refid="Blob_Column_List" />
     from briup_clazz
     where id = #{id,jdbcType=INTEGER}
   </select>
@@ -125,12 +102,12 @@
     </if>
   </delete>
   <insert id="insert" parameterType="com.example.group4.bean.Clazz">
-    insert into briup_clazz (id, name, serve_number, 
-      student_number, department_id, teacher_id, 
-      description)
-    values (#{id,jdbcType=INTEGER}, #{name,jdbcType=VARCHAR}, #{serveNumber,jdbcType=INTEGER}, 
-      #{studentNumber,jdbcType=INTEGER}, #{departmentId,jdbcType=INTEGER}, #{teacherId,jdbcType=INTEGER}, 
-      #{description,jdbcType=LONGVARCHAR})
+    insert into briup_clazz (id, name, description, 
+      serve_number, student_number, department_id, 
+      teacher_id)
+    values (#{id,jdbcType=INTEGER}, #{name,jdbcType=VARCHAR}, #{description,jdbcType=VARCHAR}, 
+      #{serveNumber,jdbcType=INTEGER}, #{studentNumber,jdbcType=INTEGER}, #{departmentId,jdbcType=INTEGER}, 
+      #{teacherId,jdbcType=INTEGER})
   </insert>
   <insert id="insertSelective" parameterType="com.example.group4.bean.Clazz">
     insert into briup_clazz
@@ -140,6 +117,9 @@
       </if>
       <if test="name != null">
         name,
+      </if>
+      <if test="description != null">
+        description,
       </if>
       <if test="serveNumber != null">
         serve_number,
@@ -153,9 +133,6 @@
       <if test="teacherId != null">
         teacher_id,
       </if>
-      <if test="description != null">
-        description,
-      </if>
     </trim>
     <trim prefix="values (" suffix=")" suffixOverrides=",">
       <if test="id != null">
@@ -163,6 +140,9 @@
       </if>
       <if test="name != null">
         #{name,jdbcType=VARCHAR},
+      </if>
+      <if test="description != null">
+        #{description,jdbcType=VARCHAR},
       </if>
       <if test="serveNumber != null">
         #{serveNumber,jdbcType=INTEGER},
@@ -175,9 +155,6 @@
       </if>
       <if test="teacherId != null">
         #{teacherId,jdbcType=INTEGER},
-      </if>
-      <if test="description != null">
-        #{description,jdbcType=LONGVARCHAR},
       </if>
     </trim>
   </insert>
@@ -196,6 +173,9 @@
       <if test="record.name != null">
         name = #{record.name,jdbcType=VARCHAR},
       </if>
+      <if test="record.description != null">
+        description = #{record.description,jdbcType=VARCHAR},
+      </if>
       <if test="record.serveNumber != null">
         serve_number = #{record.serveNumber,jdbcType=INTEGER},
       </if>
@@ -208,23 +188,7 @@
       <if test="record.teacherId != null">
         teacher_id = #{record.teacherId,jdbcType=INTEGER},
       </if>
-      <if test="record.description != null">
-        description = #{record.description,jdbcType=LONGVARCHAR},
-      </if>
     </set>
-    <if test="_parameter != null">
-      <include refid="Update_By_Example_Where_Clause" />
-    </if>
-  </update>
-  <update id="updateByExampleWithBLOBs" parameterType="map">
-    update briup_clazz
-    set id = #{record.id,jdbcType=INTEGER},
-      name = #{record.name,jdbcType=VARCHAR},
-      serve_number = #{record.serveNumber,jdbcType=INTEGER},
-      student_number = #{record.studentNumber,jdbcType=INTEGER},
-      department_id = #{record.departmentId,jdbcType=INTEGER},
-      teacher_id = #{record.teacherId,jdbcType=INTEGER},
-      description = #{record.description,jdbcType=LONGVARCHAR}
     <if test="_parameter != null">
       <include refid="Update_By_Example_Where_Clause" />
     </if>
@@ -233,6 +197,7 @@
     update briup_clazz
     set id = #{record.id,jdbcType=INTEGER},
       name = #{record.name,jdbcType=VARCHAR},
+      description = #{record.description,jdbcType=VARCHAR},
       serve_number = #{record.serveNumber,jdbcType=INTEGER},
       student_number = #{record.studentNumber,jdbcType=INTEGER},
       department_id = #{record.departmentId,jdbcType=INTEGER},
@@ -247,6 +212,9 @@
       <if test="name != null">
         name = #{name,jdbcType=VARCHAR},
       </if>
+      <if test="description != null">
+        description = #{description,jdbcType=VARCHAR},
+      </if>
       <if test="serveNumber != null">
         serve_number = #{serveNumber,jdbcType=INTEGER},
       </if>
@@ -259,25 +227,13 @@
       <if test="teacherId != null">
         teacher_id = #{teacherId,jdbcType=INTEGER},
       </if>
-      <if test="description != null">
-        description = #{description,jdbcType=LONGVARCHAR},
-      </if>
     </set>
-    where id = #{id,jdbcType=INTEGER}
-  </update>
-  <update id="updateByPrimaryKeyWithBLOBs" parameterType="com.example.group4.bean.Clazz">
-    update briup_clazz
-    set name = #{name,jdbcType=VARCHAR},
-      serve_number = #{serveNumber,jdbcType=INTEGER},
-      student_number = #{studentNumber,jdbcType=INTEGER},
-      department_id = #{departmentId,jdbcType=INTEGER},
-      teacher_id = #{teacherId,jdbcType=INTEGER},
-      description = #{description,jdbcType=LONGVARCHAR}
     where id = #{id,jdbcType=INTEGER}
   </update>
   <update id="updateByPrimaryKey" parameterType="com.example.group4.bean.Clazz">
     update briup_clazz
     set name = #{name,jdbcType=VARCHAR},
+      description = #{description,jdbcType=VARCHAR},
       serve_number = #{serveNumber,jdbcType=INTEGER},
       student_number = #{studentNumber,jdbcType=INTEGER},
       department_id = #{departmentId,jdbcType=INTEGER},

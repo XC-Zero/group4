@@ -5,11 +5,9 @@
     <id column="id" jdbcType="INTEGER" property="id" />
     <result column="name" jdbcType="VARCHAR" property="name" />
     <result column="description" jdbcType="VARCHAR" property="description" />
+    <result column="address" jdbcType="VARCHAR" property="address" />
     <result column="telepone" jdbcType="VARCHAR" property="telepone" />
     <result column="copyright" jdbcType="VARCHAR" property="copyright" />
-  </resultMap>
-  <resultMap extends="BaseResultMap" id="ResultMapWithBLOBs" type="com.example.group4.bean.Region">
-    <result column="address" jdbcType="LONGVARCHAR" property="address" />
   </resultMap>
   <sql id="Example_Where_Clause">
     <where>
@@ -70,27 +68,8 @@
     </where>
   </sql>
   <sql id="Base_Column_List">
-    id, name, description, telepone, copyright
+    id, name, description, address, telepone, copyright
   </sql>
-  <sql id="Blob_Column_List">
-    address
-  </sql>
-  <select id="selectByExampleWithBLOBs" parameterType="com.example.group4.bean.RegionExample" resultMap="ResultMapWithBLOBs">
-    select
-    <if test="distinct">
-      distinct
-    </if>
-    <include refid="Base_Column_List" />
-    ,
-    <include refid="Blob_Column_List" />
-    from briup_region
-    <if test="_parameter != null">
-      <include refid="Example_Where_Clause" />
-    </if>
-    <if test="orderByClause != null">
-      order by ${orderByClause}
-    </if>
-  </select>
   <select id="selectByExample" parameterType="com.example.group4.bean.RegionExample" resultMap="BaseResultMap">
     select
     <if test="distinct">
@@ -105,11 +84,9 @@
       order by ${orderByClause}
     </if>
   </select>
-  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="ResultMapWithBLOBs">
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
     select 
     <include refid="Base_Column_List" />
-    ,
-    <include refid="Blob_Column_List" />
     from briup_region
     where id = #{id,jdbcType=INTEGER}
   </select>
@@ -125,10 +102,10 @@
   </delete>
   <insert id="insert" parameterType="com.example.group4.bean.Region">
     insert into briup_region (id, name, description, 
-      telepone, copyright, address
+      address, telepone, copyright
       )
     values (#{id,jdbcType=INTEGER}, #{name,jdbcType=VARCHAR}, #{description,jdbcType=VARCHAR}, 
-      #{telepone,jdbcType=VARCHAR}, #{copyright,jdbcType=VARCHAR}, #{address,jdbcType=LONGVARCHAR}
+      #{address,jdbcType=VARCHAR}, #{telepone,jdbcType=VARCHAR}, #{copyright,jdbcType=VARCHAR}
       )
   </insert>
   <insert id="insertSelective" parameterType="com.example.group4.bean.Region">
@@ -143,14 +120,14 @@
       <if test="description != null">
         description,
       </if>
+      <if test="address != null">
+        address,
+      </if>
       <if test="telepone != null">
         telepone,
       </if>
       <if test="copyright != null">
         copyright,
-      </if>
-      <if test="address != null">
-        address,
       </if>
     </trim>
     <trim prefix="values (" suffix=")" suffixOverrides=",">
@@ -163,14 +140,14 @@
       <if test="description != null">
         #{description,jdbcType=VARCHAR},
       </if>
+      <if test="address != null">
+        #{address,jdbcType=VARCHAR},
+      </if>
       <if test="telepone != null">
         #{telepone,jdbcType=VARCHAR},
       </if>
       <if test="copyright != null">
         #{copyright,jdbcType=VARCHAR},
-      </if>
-      <if test="address != null">
-        #{address,jdbcType=LONGVARCHAR},
       </if>
     </trim>
   </insert>
@@ -192,28 +169,16 @@
       <if test="record.description != null">
         description = #{record.description,jdbcType=VARCHAR},
       </if>
+      <if test="record.address != null">
+        address = #{record.address,jdbcType=VARCHAR},
+      </if>
       <if test="record.telepone != null">
         telepone = #{record.telepone,jdbcType=VARCHAR},
       </if>
       <if test="record.copyright != null">
         copyright = #{record.copyright,jdbcType=VARCHAR},
       </if>
-      <if test="record.address != null">
-        address = #{record.address,jdbcType=LONGVARCHAR},
-      </if>
     </set>
-    <if test="_parameter != null">
-      <include refid="Update_By_Example_Where_Clause" />
-    </if>
-  </update>
-  <update id="updateByExampleWithBLOBs" parameterType="map">
-    update briup_region
-    set id = #{record.id,jdbcType=INTEGER},
-      name = #{record.name,jdbcType=VARCHAR},
-      description = #{record.description,jdbcType=VARCHAR},
-      telepone = #{record.telepone,jdbcType=VARCHAR},
-      copyright = #{record.copyright,jdbcType=VARCHAR},
-      address = #{record.address,jdbcType=LONGVARCHAR}
     <if test="_parameter != null">
       <include refid="Update_By_Example_Where_Clause" />
     </if>
@@ -223,6 +188,7 @@
     set id = #{record.id,jdbcType=INTEGER},
       name = #{record.name,jdbcType=VARCHAR},
       description = #{record.description,jdbcType=VARCHAR},
+      address = #{record.address,jdbcType=VARCHAR},
       telepone = #{record.telepone,jdbcType=VARCHAR},
       copyright = #{record.copyright,jdbcType=VARCHAR}
     <if test="_parameter != null">
@@ -238,31 +204,23 @@
       <if test="description != null">
         description = #{description,jdbcType=VARCHAR},
       </if>
+      <if test="address != null">
+        address = #{address,jdbcType=VARCHAR},
+      </if>
       <if test="telepone != null">
         telepone = #{telepone,jdbcType=VARCHAR},
       </if>
       <if test="copyright != null">
         copyright = #{copyright,jdbcType=VARCHAR},
       </if>
-      <if test="address != null">
-        address = #{address,jdbcType=LONGVARCHAR},
-      </if>
     </set>
-    where id = #{id,jdbcType=INTEGER}
-  </update>
-  <update id="updateByPrimaryKeyWithBLOBs" parameterType="com.example.group4.bean.Region">
-    update briup_region
-    set name = #{name,jdbcType=VARCHAR},
-      description = #{description,jdbcType=VARCHAR},
-      telepone = #{telepone,jdbcType=VARCHAR},
-      copyright = #{copyright,jdbcType=VARCHAR},
-      address = #{address,jdbcType=LONGVARCHAR}
     where id = #{id,jdbcType=INTEGER}
   </update>
   <update id="updateByPrimaryKey" parameterType="com.example.group4.bean.Region">
     update briup_region
     set name = #{name,jdbcType=VARCHAR},
       description = #{description,jdbcType=VARCHAR},
+      address = #{address,jdbcType=VARCHAR},
       telepone = #{telepone,jdbcType=VARCHAR},
       copyright = #{copyright,jdbcType=VARCHAR}
     where id = #{id,jdbcType=INTEGER}

@@ -9,11 +9,11 @@ public class Region implements Serializable {
 
     private String description;
 
+    private String address;
+
     private String telepone;
 
     private String copyright;
-
-    private String address;
 
     private static final long serialVersionUID = 1L;
 
@@ -41,6 +41,14 @@ public class Region implements Serializable {
         this.description = description == null ? null : description.trim();
     }
 
+    public String getAddress() {
+        return address;
+    }
+
+    public void setAddress(String address) {
+        this.address = address == null ? null : address.trim();
+    }
+
     public String getTelepone() {
         return telepone;
     }
@@ -57,14 +65,6 @@ public class Region implements Serializable {
         this.copyright = copyright == null ? null : copyright.trim();
     }
 
-    public String getAddress() {
-        return address;
-    }
-
-    public void setAddress(String address) {
-        this.address = address == null ? null : address.trim();
-    }
-
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
@@ -74,9 +74,9 @@ public class Region implements Serializable {
         sb.append(", id=").append(id);
         sb.append(", name=").append(name);
         sb.append(", description=").append(description);
+        sb.append(", address=").append(address);
         sb.append(", telepone=").append(telepone);
         sb.append(", copyright=").append(copyright);
-        sb.append(", address=").append(address);
         sb.append(", serialVersionUID=").append(serialVersionUID);
         sb.append("]");
         return sb.toString();

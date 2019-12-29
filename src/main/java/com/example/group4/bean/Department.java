@@ -7,9 +7,9 @@ public class Department implements Serializable {
 
     private String name;
 
-    private Integer regionId;
-
     private String description;
+
+    private Integer regionId;
 
     private static final long serialVersionUID = 1L;
 
@@ -29,20 +29,20 @@ public class Department implements Serializable {
         this.name = name == null ? null : name.trim();
     }
 
-    public Integer getRegionId() {
-        return regionId;
-    }
-
-    public void setRegionId(Integer regionId) {
-        this.regionId = regionId;
-    }
-
     public String getDescription() {
         return description;
     }
 
     public void setDescription(String description) {
         this.description = description == null ? null : description.trim();
+    }
+
+    public Integer getRegionId() {
+        return regionId;
+    }
+
+    public void setRegionId(Integer regionId) {
+        this.regionId = regionId;
     }
 
     @Override
@@ -53,8 +53,8 @@ public class Department implements Serializable {
         sb.append("Hash = ").append(hashCode());
         sb.append(", id=").append(id);
         sb.append(", name=").append(name);
-        sb.append(", regionId=").append(regionId);
         sb.append(", description=").append(description);
+        sb.append(", regionId=").append(regionId);
         sb.append(", serialVersionUID=").append(serialVersionUID);
         sb.append("]");
         return sb.toString();

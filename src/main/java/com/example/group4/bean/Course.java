@@ -7,9 +7,9 @@ public class Course implements Serializable {
 
     private String name;
 
-    private Integer period;
-
     private String description;
+
+    private Integer period;
 
     private static final long serialVersionUID = 1L;
 
@@ -29,20 +29,20 @@ public class Course implements Serializable {
         this.name = name == null ? null : name.trim();
     }
 
-    public Integer getPeriod() {
-        return period;
-    }
-
-    public void setPeriod(Integer period) {
-        this.period = period;
-    }
-
     public String getDescription() {
         return description;
     }
 
     public void setDescription(String description) {
         this.description = description == null ? null : description.trim();
+    }
+
+    public Integer getPeriod() {
+        return period;
+    }
+
+    public void setPeriod(Integer period) {
+        this.period = period;
     }
 
     @Override
@@ -53,8 +53,8 @@ public class Course implements Serializable {
         sb.append("Hash = ").append(hashCode());
         sb.append(", id=").append(id);
         sb.append(", name=").append(name);
-        sb.append(", period=").append(period);
         sb.append(", description=").append(description);
+        sb.append(", period=").append(period);
         sb.append(", serialVersionUID=").append(serialVersionUID);
         sb.append("]");
         return sb.toString();
