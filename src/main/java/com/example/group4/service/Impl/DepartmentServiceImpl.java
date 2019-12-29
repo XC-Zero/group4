@@ -43,7 +43,10 @@ public class DepartmentServiceImpl implements IDepartmentService {
             return departmentMapper.selectByExample(departmentExample);
         }else{
             word="%"+word+"%";
-            return departmentMapper.selectByWord(word);
+            DepartmentExample departmentExample = new DepartmentExample();
+            departmentExample.createCriteria().andDescriptionLike(word);
+            departmentExample.or().andNameLike(word);
+            return departmentMapper.selectByExample(departmentExample);
         }
     }
 
