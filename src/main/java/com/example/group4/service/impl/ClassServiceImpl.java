@@ -2,7 +2,7 @@ package com.example.group4.service.impl;
 
 import com.example.group4.bean.Clazz;
 import com.example.group4.mapper.ClazzMapper;
-import com.example.group4.mapper.ex.ClazzMapperEX;
+import com.example.group4.mapper.ex.ClazzEXMapper;
 import com.example.group4.service.IClassService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -14,12 +14,12 @@ public class ClassServiceImpl implements IClassService {
     @Autowired
     private ClazzMapper clazzMapper;
     @Autowired
-    private ClazzMapperEX clazzMapperEX;
+    private ClazzEXMapper clazzEXMapper;
 
 
     @Override
     public List<Clazz> findAll() throws RuntimeException {
-        return clazzMapperEX.findAll();
+        return clazzEXMapper.findAll();
     }
 
     @Override
@@ -59,15 +59,15 @@ public class ClassServiceImpl implements IClassService {
         }else if((key==null||"".equals(key))&& !"".equals(word)){
             word ="%"+word+"%";
             //名字和作者查询
-            return clazzMapperEX.selectNameOrTeacher(word);
+            return clazzEXMapper.selectNameOrTeacher(word);
         }else if ("name".equals(key)){
             word ="%"+word+"%";
             //标题查询
-            return clazzMapperEX.selectName(word);
+            return clazzEXMapper.selectName(word);
         }else if("teacher".equals(key)){
             word ="%"+word+"%";
             //作者查询
-            return clazzMapperEX.selectTeachername(word);
+            return clazzEXMapper.selectTeachername(word);
         }
         return null;
     }

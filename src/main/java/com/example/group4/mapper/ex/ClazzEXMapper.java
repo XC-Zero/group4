@@ -4,7 +4,7 @@ import com.example.group4.bean.Clazz;
 
 import java.util.List;
 
-public interface ClazzMapperEX {
+public interface ClazzEXMapper {
     List<Clazz> findAll();
 
     List<Clazz> selectNameOrTeacher(String word);
