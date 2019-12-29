@@ -27,9 +27,19 @@ public class TeacherServiceImpl implements ITeacherService {
     }
 
     @Override
-    public List<Teacher> search(String word) throws RuntimeException {
+    public List<Teacher> search(String key, String word) throws RuntimeException {
+        word=word==null?"":word;    //模糊查询
+
+        //select * from cms_article where titile like %% 就是查询所有
+        if ((key==null||"".equals(key))&&(word==null||"".equals(word))) {
+            TeacherExample teacherExample = new TeacherExample();
+            return teacherMapper.selectByExample(teacherExample);
+
+        }
         return null;
+
     }
+
 
 
     @Override
