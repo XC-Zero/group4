@@ -62,9 +62,9 @@ public class TeacherController {
     @GetMapping("/search")
     @ApiOperation("搜索")
     public Message search(String key,String word) {
-        teacherService.search(key,word);
+        //teacherService.search(key,word);
 
-        return MessageUtil.success();
+        return MessageUtil.success(teacherService.search(key,word));
 
     }
 
