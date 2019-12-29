@@ -22,11 +22,11 @@ public class DepartmentServiceImpl implements IDepartmentService {
     @Override
     public void saveOrUpdate(Department department) throws RuntimeException{
         if(department==null){
-            throw new RuntimeException("参数出错");
+            new RuntimeException("参数为空");
         }
         if(department.getId()==null){
             departmentMapper.insert(department);
-        }else{
+        } else {
             departmentMapper.updateByPrimaryKey(department);
         }
     }
@@ -44,6 +44,13 @@ public class DepartmentServiceImpl implements IDepartmentService {
         }else{
             word="%"+word+"%";
             return departmentMapper.selectByWord(word);
+        }
+    }
+
+    @Override
+    public void deleteMore(int[] a) throws RuntimeException {
+        for(int n :a){
+            departmentMapper.deleteByPrimaryKey(n);
         }
     }
 }
