@@ -20,7 +20,7 @@
 
 		<!-- 注意！如果要重新生成pojo类，务必改成项目组数据库，用户名密码 -->
 		<jdbcConnection driverClass="com.mysql.cj.jdbc.Driver"
-			connectionURL="jdbc:mysql://test-group4.mysql.rds.aliyuncs.com:9988/group4" userId="group4"
+			connectionURL="jdbc:mysql://test-group4.mysql.rds.aliyuncs.com:9988/group4_2" userId="group4"
 			password="CJMcjm136466!">
 		</jdbcConnection>
 
@@ -50,8 +50,19 @@
 
 
 		<!-- 映射配置 -->
-		<table tableName="student" domainObjectName="Student"></table>
-		<table tableName="book" domainObjectName="Book"></table>
+		<table tableName="briup_clazz" domainObjectName="briup_clazz"></table>
+		<table tableName="briup_course" domainObjectName="briup_course"></table>
+		<table tableName="briup_department" domainObjectName="briup_department"></table>
+		<table tableName="briup_log" domainObjectName="briup_log"></table>
+		<table tableName="briup_options" domainObjectName="briup_options"></table>
+		<table tableName="briup_qqn" domainObjectName="briup_qqn"></table>
+		<table tableName="briup_question" domainObjectName="briup_question"></table>
+		<table tableName="briup_questionnaire" domainObjectName="briup_questionnaire"></table>
+		<table tableName="briup_region" domainObjectName="briup_region"></table>
+		<table tableName="briup_survey" domainObjectName="briup_survey"></table>
+		<table tableName="briup_teacher" domainObjectName="briup_teacher"></table>
+
+
 
 	</context>
 </generatorConfiguration>
