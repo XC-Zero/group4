@@ -20,7 +20,7 @@ import java.util.List;
 @Api(description = "课程管理")
 public class CourseController  {
     @Autowired
-    private ICourseService courseService;
+    private ICourseService courseService ;
 
     @GetMapping("/selectAll")
     @ApiOperation(value="获取全部课程")
