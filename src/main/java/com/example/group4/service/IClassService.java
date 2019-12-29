@@ -14,4 +14,6 @@ public interface IClassService {
     void delById(int id) throws RuntimeException;
 
     void delMany(int[] ids) throws RuntimeException;
+
+    List<Clazz> search(String key, String word);
 }

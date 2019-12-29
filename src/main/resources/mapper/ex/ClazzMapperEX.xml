@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.example.group4.mapper.ex.ClazzMapperEX">
+    <resultMap id="abn" type="com.example.group4.bean.ex.ClazzEX">
+        <id property="id" column="id"></id>
+        <result column="name" property="name"></result>
+        <result column="description" property="description"></result>
+        <association property="teacher" column="teacher_id" select="selectTeacher"></association>
+    </resultMap>
+
+    <select id="findAll" resultMap="abn">
+        select * from briup_clazz
+    </select>
+
+    <select id="selectTeacher" resultType="com.example.group4.bean.Teacher">
+        select * from briup_teacher where id = #{teacherId}
+    </select>
+
+    <select id="selectNameOrTeacher" resultType="com.example.group4.bean.ex.ClazzEX">
+        select * from briup_clazz
+    </select>
+
+    <select id="selectName" resultType="com.example.group4.bean.ex.ClazzEX">
+        select * from briup_clazz where name like #{name}
+    </select>
+    <select id="selectTeachername" resultType="com.example.group4.bean.ex.ClazzEX">
+        select * from briup_clazz where techer_id like #{teacherid}
+    </select>
+</mapper>

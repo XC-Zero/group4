@@ -6,7 +6,7 @@ import com.example.group4.bean.Teacher;
 
 import java.io.Serializable;
 
-public class Briup_clazzEX implements Serializable {
+public class ClazzEX implements Serializable {
     private Integer id;
 
     private String name;
@@ -14,6 +14,16 @@ public class Briup_clazzEX implements Serializable {
     private Integer serveNumber;
 
     private Integer studentNumber;
+
+    private int teacherId;
+
+    public int getTeacherId() {
+        return teacherId;
+    }
+
+    public void setTeacherId(int teacherId) {
+        this.teacherId = teacherId;
+    }
 
     private String description;
 
@@ -69,11 +79,12 @@ public class Briup_clazzEX implements Serializable {
 
     @Override
     public String toString() {
-        return "Briup_clazzEX{" +
+        return "ClazzEX{" +
                 "id=" + id +
                 ", name='" + name + '\'' +
                 ", serveNumber=" + serveNumber +
                 ", studentNumber=" + studentNumber +
+                ", teacherId=" + teacherId +
                 ", description='" + description + '\'' +
                 ", teacher=" + teacher +
                 '}';
