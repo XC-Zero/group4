@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.example.group4.mapper.TeacherMapper">
+    <resultMap id="BaseResultMap" type="com.example.group4.bean.Teacher">
+        <id column="id"  property="id" />
+        <result column="name"  property="name" />
+        <result column="gender"  property="gender" />
+        <result column="birthday"  property="birthday" />
+        <result column="startday"  property="startday" />
+    </resultMap>
+</mapper>
