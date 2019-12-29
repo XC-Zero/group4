@@ -50,17 +50,17 @@
 
 
 		<!-- 映射配置 -->
-		<table tableName="briup_clazz" domainObjectName="briup_clazz"></table>
-		<table tableName="briup_course" domainObjectName="briup_course"></table>
-		<table tableName="briup_department" domainObjectName="briup_department"></table>
-		<table tableName="briup_log" domainObjectName="briup_log"></table>
-		<table tableName="briup_options" domainObjectName="briup_options"></table>
-		<table tableName="briup_qqn" domainObjectName="briup_qqn"></table>
-		<table tableName="briup_question" domainObjectName="briup_question"></table>
-		<table tableName="briup_questionnaire" domainObjectName="briup_questionnaire"></table>
-		<table tableName="briup_region" domainObjectName="briup_region"></table>
-		<table tableName="briup_survey" domainObjectName="briup_survey"></table>
-		<table tableName="briup_teacher" domainObjectName="briup_teacher"></table>
+		<table tableName="briup_clazz" domainObjectName="Briup_clazz"></table>
+		<table tableName="briup_course" domainObjectName="Briup_course"></table>
+		<table tableName="briup_department" domainObjectName="Briup_department"></table>
+		<table tableName="briup_log" domainObjectName="Briup_log"></table>
+		<table tableName="briup_options" domainObjectName="Briup_options"></table>
+		<table tableName="briup_qqn" domainObjectName="Briup_qqn"></table>
+		<table tableName="briup_question" domainObjectName="Briup_question"></table>
+		<table tableName="briup_questionnaire" domainObjectName="Briup_questionnaire"></table>
+		<table tableName="briup_region" domainObjectName="Briup_region"></table>
+		<table tableName="briup_survey" domainObjectName="Briup_survey"></table>
+		<table tableName="briup_teacher" domainObjectName="Briup_teacher"></table>
 
 
 
