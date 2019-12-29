@@ -56,9 +56,14 @@ public class TeacherController {
     @GetMapping("/deleteMore")
     @ApiOperation("批量删除")
     public Message deleteS(int[] ids) {
-        for (int id : ids) {
-            teacherService.deleteById(id);
-        }
+        teacherService.deleteMore(ids);
+        return MessageUtil.success();
+    }
+    @GetMapping("/search")
+    @ApiOperation("搜索")
+    public Message search(String key,String word) {
+        teacherService.search(key,word);
+
         return MessageUtil.success();
 
     }

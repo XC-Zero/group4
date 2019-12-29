@@ -1,5 +1,7 @@
 package com.example.group4.bean;
 
+import org.springframework.format.annotation.DateTimeFormat;
+
 import java.io.Serializable;
 import java.util.Date;
 
@@ -10,8 +12,11 @@ public class Teacher implements Serializable {
 
     private String gender;
 
+
+    @DateTimeFormat(pattern = "yyyy-MM-dd")
     private Date birthday;
 
+    @DateTimeFormat(pattern = "yyyy-MM-dd")
     private Date startday;
 
     private static final long serialVersionUID = 1L;
