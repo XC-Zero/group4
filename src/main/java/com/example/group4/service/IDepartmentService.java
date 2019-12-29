@@ -8,4 +8,5 @@ public interface IDepartmentService {
     void saveOrUpdate(Department department)throws RuntimeException;
     void deleteById(int id) throws RuntimeException;
     List<Department> selectByWord(String word) throws RuntimeException;
+    void deleteMore(int []a)throws RuntimeException;
 }
