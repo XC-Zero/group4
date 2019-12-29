@@ -1,11 +1,8 @@
-package com.example.group4.service.Impl;
+package com.example.group4.service.impl;
 
-import com.example.group4.bean.Question;
 import com.example.group4.bean.ex.QuestionEX;
 import com.example.group4.service.IQuestionService;
 import org.springframework.stereotype.Service;
-
-import java.util.List;
 
 
 @Service
@@ -36,8 +33,4 @@ public class QuestionServiceImpl implements IQuestionService{
 
     }
 
-    @Override
-    public List<Question> selectAll() throws RuntimeException {
-        return null;
-    }
 }
