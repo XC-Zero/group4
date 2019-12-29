@@ -30,21 +30,20 @@ public class TeacherServiceImpl implements ITeacherService {
     public List<Teacher> search(String key, String word) throws RuntimeException {
         word=word==null?"":word;    //模糊查询
         TeacherExample teacherExample=new TeacherExample();
+
         //select * from cms_article where titile like %% 就是查询所有
         if ((key==null||"".equals(key))&&(word==null||"".equals(word))){
-
             return teacherMapper.selectByExample(teacherExample);
-
         }
         else if ((key==null||"".equals(key)&&!"".equals(word))){//前面下拉框为空，后面输入框不为空
             //根据作者或标题查询
+
             word="%"+word+"%";
             teacherExample.createCriteria().andNameLike(word);
+            teacherExample.or().andIdEqualTo(Integer.parseInt(word));
 
 
             return teacherMapper.selectByExample(teacherExample);
-
-
         }else if ("id".equals(key)){
             word="%"+word+"%";
             int id=Integer.parseInt(word);
@@ -59,8 +58,6 @@ public class TeacherServiceImpl implements ITeacherService {
         return null;
 
     }
-
-
 
     @Override
     public void saveOrUpdate(Teacher teacher) throws RuntimeException {
