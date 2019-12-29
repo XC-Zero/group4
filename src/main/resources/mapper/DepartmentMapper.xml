@@ -4,10 +4,8 @@
   <resultMap id="BaseResultMap" type="com.example.group4.bean.Department">
     <id column="id" jdbcType="INTEGER" property="id" />
     <result column="name" jdbcType="VARCHAR" property="name" />
+    <result column="description" jdbcType="VARCHAR" property="description" />
     <result column="region_id" jdbcType="INTEGER" property="regionId" />
-  </resultMap>
-  <resultMap extends="BaseResultMap" id="ResultMapWithBLOBs" type="com.example.group4.bean.Department">
-    <result column="description" jdbcType="LONGVARCHAR" property="description" />
   </resultMap>
   <sql id="Example_Where_Clause">
     <where>
@@ -68,27 +66,8 @@
     </where>
   </sql>
   <sql id="Base_Column_List">
-    id, name, region_id
+    id, name, description, region_id
   </sql>
-  <sql id="Blob_Column_List">
-    description
-  </sql>
-  <select id="selectByExampleWithBLOBs" parameterType="com.example.group4.bean.DepartmentExample" resultMap="ResultMapWithBLOBs">
-    select
-    <if test="distinct">
-      distinct
-    </if>
-    <include refid="Base_Column_List" />
-    ,
-    <include refid="Blob_Column_List" />
-    from briup_department
-    <if test="_parameter != null">
-      <include refid="Example_Where_Clause" />
-    </if>
-    <if test="orderByClause != null">
-      order by ${orderByClause}
-    </if>
-  </select>
   <select id="selectByExample" parameterType="com.example.group4.bean.DepartmentExample" resultMap="BaseResultMap">
     select
     <if test="distinct">
@@ -103,11 +82,9 @@
       order by ${orderByClause}
     </if>
   </select>
-  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="ResultMapWithBLOBs">
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
     select 
     <include refid="Base_Column_List" />
-    ,
-    <include refid="Blob_Column_List" />
     from briup_department
     where id = #{id,jdbcType=INTEGER}
   </select>
@@ -122,10 +99,10 @@
     </if>
   </delete>
   <insert id="insert" parameterType="com.example.group4.bean.Department">
-    insert into briup_department (id, name, region_id, 
-      description)
-    values (#{id,jdbcType=INTEGER}, #{name,jdbcType=VARCHAR}, #{regionId,jdbcType=INTEGER}, 
-      #{description,jdbcType=LONGVARCHAR})
+    insert into briup_department (id, name, description, 
+      region_id)
+    values (#{id,jdbcType=INTEGER}, #{name,jdbcType=VARCHAR}, #{description,jdbcType=VARCHAR}, 
+      #{regionId,jdbcType=INTEGER})
   </insert>
   <insert id="insertSelective" parameterType="com.example.group4.bean.Department">
     insert into briup_department
@@ -136,11 +113,11 @@
       <if test="name != null">
         name,
       </if>
-      <if test="regionId != null">
-        region_id,
-      </if>
       <if test="description != null">
         description,
+      </if>
+      <if test="regionId != null">
+        region_id,
       </if>
     </trim>
     <trim prefix="values (" suffix=")" suffixOverrides=",">
@@ -150,11 +127,11 @@
       <if test="name != null">
         #{name,jdbcType=VARCHAR},
       </if>
+      <if test="description != null">
+        #{description,jdbcType=VARCHAR},
+      </if>
       <if test="regionId != null">
         #{regionId,jdbcType=INTEGER},
-      </if>
-      <if test="description != null">
-        #{description,jdbcType=LONGVARCHAR},
       </if>
     </trim>
   </insert>
@@ -173,23 +150,13 @@
       <if test="record.name != null">
         name = #{record.name,jdbcType=VARCHAR},
       </if>
+      <if test="record.description != null">
+        description = #{record.description,jdbcType=VARCHAR},
+      </if>
       <if test="record.regionId != null">
         region_id = #{record.regionId,jdbcType=INTEGER},
       </if>
-      <if test="record.description != null">
-        description = #{record.description,jdbcType=LONGVARCHAR},
-      </if>
     </set>
-    <if test="_parameter != null">
-      <include refid="Update_By_Example_Where_Clause" />
-    </if>
-  </update>
-  <update id="updateByExampleWithBLOBs" parameterType="map">
-    update briup_department
-    set id = #{record.id,jdbcType=INTEGER},
-      name = #{record.name,jdbcType=VARCHAR},
-      region_id = #{record.regionId,jdbcType=INTEGER},
-      description = #{record.description,jdbcType=LONGVARCHAR}
     <if test="_parameter != null">
       <include refid="Update_By_Example_Where_Clause" />
     </if>
@@ -198,6 +165,7 @@
     update briup_department
     set id = #{record.id,jdbcType=INTEGER},
       name = #{record.name,jdbcType=VARCHAR},
+      description = #{record.description,jdbcType=VARCHAR},
       region_id = #{record.regionId,jdbcType=INTEGER}
     <if test="_parameter != null">
       <include refid="Update_By_Example_Where_Clause" />
@@ -209,25 +177,19 @@
       <if test="name != null">
         name = #{name,jdbcType=VARCHAR},
       </if>
+      <if test="description != null">
+        description = #{description,jdbcType=VARCHAR},
+      </if>
       <if test="regionId != null">
         region_id = #{regionId,jdbcType=INTEGER},
       </if>
-      <if test="description != null">
-        description = #{description,jdbcType=LONGVARCHAR},
-      </if>
     </set>
-    where id = #{id,jdbcType=INTEGER}
-  </update>
-  <update id="updateByPrimaryKeyWithBLOBs" parameterType="com.example.group4.bean.Department">
-    update briup_department
-    set name = #{name,jdbcType=VARCHAR},
-      region_id = #{regionId,jdbcType=INTEGER},
-      description = #{description,jdbcType=LONGVARCHAR}
     where id = #{id,jdbcType=INTEGER}
   </update>
   <update id="updateByPrimaryKey" parameterType="com.example.group4.bean.Department">
     update briup_department
     set name = #{name,jdbcType=VARCHAR},
+      description = #{description,jdbcType=VARCHAR},
       region_id = #{regionId,jdbcType=INTEGER}
     where id = #{id,jdbcType=INTEGER}
   </update>

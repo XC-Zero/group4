@@ -16,21 +16,15 @@ public interface ClazzMapper {
 
     int insertSelective(Clazz record);
 
-    List<Clazz> selectByExampleWithBLOBs(ClazzExample example);
-
     List<Clazz> selectByExample(ClazzExample example);
 
     Clazz selectByPrimaryKey(Integer id);
 
     int updateByExampleSelective(@Param("record") Clazz record, @Param("example") ClazzExample example);
 
-    int updateByExampleWithBLOBs(@Param("record") Clazz record, @Param("example") ClazzExample example);
-
     int updateByExample(@Param("record") Clazz record, @Param("example") ClazzExample example);
 
     int updateByPrimaryKeySelective(Clazz record);
-
-    int updateByPrimaryKeyWithBLOBs(Clazz record);
 
     int updateByPrimaryKey(Clazz record);
 }
