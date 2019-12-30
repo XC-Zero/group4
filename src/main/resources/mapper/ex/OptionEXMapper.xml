@@ -4,6 +4,9 @@
     <insert id="addOption">
         insert into briup_options values (#{id},#{label},#{name},#{score},#{question.id})
     </insert>
+
+    <update id="updateOrAdd">
+        update briup_options set name =#{name},label=#{label} where id=#{question.id}   </update>
 </mapper>
 
 

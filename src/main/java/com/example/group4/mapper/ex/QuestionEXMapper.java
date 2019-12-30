@@ -4,6 +4,6 @@ import com.example.group4.bean.Question;
 
 public interface QuestionEXMapper {
     void add(Question questionEX);
+    void updateOrAdd(Question questionEX);
 
-    void updateQuestion(Question questionEX);
 }

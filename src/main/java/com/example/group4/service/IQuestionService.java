@@ -9,6 +9,6 @@ public interface IQuestionService {
     void addQ(Question question, List<OptionsEX> options)throws RuntimeException;
     void deleteById(int id) throws RuntimeException;
     void deleteMore(int[] ids)throws RuntimeException;
-    void updateOrAdd(Question questionEX)throws RuntimeException;
+    void updateOrAdd(Question question,List<OptionsEX> options)throws RuntimeException;
     void searchQ(String key,String word) throws RuntimeException;
 }

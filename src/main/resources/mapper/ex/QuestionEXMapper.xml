@@ -8,5 +8,10 @@
        insert into briup_question values (#{id},#{name},#{type})
 
     </insert>
+    <update id="updateOrAdd">
+
+        update briup_question set  name=#{name},type =#{type} where id=#{id}
+
+    </update>
 
 </mapper>
