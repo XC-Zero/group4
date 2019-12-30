@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.example.group4.mapper.ex.QqnEXMapper">
+
+    <delete id="deleteByQnid" >
+         delete from briup_qqn where questionnaire_id=#{id}
+    </delete>
+
+
+    <resultMap id="selectQuestion" type="com.example.group4.bean.ex.QuestionEX">
+    <id column="id" property="id"></id>
+    <result column="name" property="name"></result>
+    <result column="type" property="type" />
+    <association property="options" column="id"
+                 select="selectOptions"></association>
+</resultMap>
+
+   <!-- <resultMap id="selectQuestion_" type="com.example.group4.bean.ex.QqnEx">
+        <id column="id" property="id"></id>
+        <result column="question_id" property="questionId"></result>
+        <result column="questionnaire_id" property="questionnaireId" />
+        <association property="questionEX" column="id"
+                     select="selectQuestion_"></association>
+    </resultMap>-->
+
+
+
+
+    <select id="selectQuestionByQuestionnaireId" resultMap="selectQuestion">
+        select b.*
+        from briup_qqn a,briup_question b
+        where b.id = a.question_id
+        and a.questionnaire_id = #{id}
+    </select>
+
+
+
+  <!--  <select id="selectQuestion_" resultMap="selectOptions">
+        select * from briup_question where id = #{id}
+
+    </select>-->
+
+
+    <select id="selectOptions" resultType="com.example.group4.bean.Options">
+        select * from briup_options where question_id = #{id}
+    </select>
+
+
+
+
+
+
+
+
+
+
+
+</mapper>

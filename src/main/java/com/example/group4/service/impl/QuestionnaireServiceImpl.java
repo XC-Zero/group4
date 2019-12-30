@@ -7,7 +7,9 @@ import com.example.group4.bean.ex.QuestionEX;
 import com.example.group4.bean.ex.QuestionnaireEX;
 import com.example.group4.mapper.QqnMapper;
 import com.example.group4.mapper.QuestionnaireMapper;
+import com.example.group4.mapper.ex.QqnEXMapper;
 import com.example.group4.mapper.ex.QuestionnaireEXMapper;
+import com.example.group4.mapper.ex.SurveyEXMapper;
 import com.example.group4.service.IQuestionnaireService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -24,6 +26,34 @@ public class QuestionnaireServiceImpl implements IQuestionnaireService {
     private QuestionnaireMapper questionnaireMapper;
     @Autowired
     private QqnMapper qqnMapper;
+
+
+    @Autowired
+    private QqnEXMapper qqnEXMapper;
+    @Autowired
+    private SurveyEXMapper surveyEXMapper;
+
+    public QuestionnaireServiceImpl() {
+    }
+
+    public List<Questionnaire> selectByName(String key) throws RuntimeException {
+        key = "%" + key + "%";
+        List<Questionnaire> list = this.questionnaireEXMapper.selectByName(key);
+        return list;
+    }
+
+    public void deleteById(int id) throws RuntimeException {
+        this.surveyEXMapper.deleteByQnid(id);
+        this.qqnEXMapper.deleteByQnid(id);
+        this.questionnaireEXMapper.deleteById(id);
+    }
+
+    public List<QuestionEX> displayQuestionnaireById(int id) throws RuntimeException {
+        System.out.println("id:" + id);
+        List<QuestionEX> questions = this.qqnEXMapper.selectQuestionByQuestionnaireId(id);
+        System.out.println(questions);
+        return questions;
+    }
     @Override
     public void saveOrUpdata(QuestionnaireEX questionnaireEX) throws RuntimeException{
         if(questionnaireEX.getId()==null){

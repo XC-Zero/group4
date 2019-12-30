@@ -11,4 +11,7 @@ public interface QuestionnaireEXMapper {
     void insertQuestionnaire(Questionnaire questionnaire);
     public List<Question>selectQuestion(int id);
     public List<QuestionEX>selectQuestionAndOption(int id);
+    List<Questionnaire> selectByName(String key);
+
+    void deleteById(int id);
 }
