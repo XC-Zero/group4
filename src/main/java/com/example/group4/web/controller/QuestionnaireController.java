@@ -1,9 +1,6 @@
 package com.example.group4.web.controller;
 
-
-import com.example.group4.bean.Questionnaire;
 import com.example.group4.bean.ex.QuestionnaireEX;
-import com.example.group4.mapper.ex.QuestionnaireEXMapper;
 import com.example.group4.service.impl.QuestionnaireServiceImpl;
 import com.example.group4.util.Message;
 import com.example.group4.util.MessageUtil;
@@ -15,8 +12,17 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
-@RequestMapping("/Question")
-@Api(description = "Question的控制器")
-public class QuestionController {
+@Api(description = "问卷控制器")
+@RequestMapping("/questionnaire")
+public class QuestionnaireController {
+    @Autowired
+    private QuestionnaireServiceImpl questionnaireService;
+
+    @GetMapping("/insertQuestionnaireEX")
+    @ApiOperation(value = "修改或者添加问卷")
+    public Message saveQuestionnaire(QuestionnaireEX questionnaireEX){
+        questionnaireService.saveOrUpdata(questionnaireEX);
+        return MessageUtil.success();
+    }
 
 }

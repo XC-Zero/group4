@@ -1,6 +1,7 @@
 package com.example.group4.bean.ex;
 
 import com.example.group4.bean.Question;
+import org.springframework.format.annotation.DateTimeFormat;
 
 import java.util.Date;
 import java.util.List;
@@ -12,9 +13,18 @@ public class QuestionnaireEX {
 
     private String description;
 
+    @DateTimeFormat(pattern = "yyyy-MM-dd")
     private Date date;
 
-    private List<Question> list;
+    private int a[];
+
+    public int[] getA() {
+        return a;
+    }
+
+    public void setA(int[] a) {
+        this.a = a;
+    }
 
     public Integer getId() {
         return id;
@@ -48,11 +58,4 @@ public class QuestionnaireEX {
         this.date = date;
     }
 
-    public List<Question> getList() {
-        return list;
-    }
-
-    public void setList(List<Question> list) {
-        this.list = list;
-    }
 }

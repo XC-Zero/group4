@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.example.group4.mapper.QuestionMapper">
+    <insert id="insertQuestionnaireEX">
+        insert into briup_questionnaire values (#{id},#{name},#{description},#{date})
+    </insert>
+    <insert id="insertqqn">
+        insert into btiup_qqn values(#{a},#{qnid})
+    </insert>
+    <update id="updateQuestionnaireEX">
+        update briup_questionnaire set name=#{name},description=#{description},date=#{date} where id=#{id}
+    </update>
+
+</mapper>
