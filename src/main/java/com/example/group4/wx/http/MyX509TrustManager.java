@@ -1,4 +1,4 @@
-package com.example.group4.http;
+package com.example.group4.wx.http;
 
 import javax.net.ssl.X509TrustManager;
 import java.security.cert.CertificateException;

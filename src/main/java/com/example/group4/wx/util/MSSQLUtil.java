@@ -1,4 +1,4 @@
-package com.example.group4.wx;
+package com.example.group4.wx.util;
 
 public class MSSQLUtil {
     public static String getGoodsName() {

@@ -1,10 +1,13 @@
-package com.example.group4.web.controller;
+package com.example.group4.wx.controller;
 
 import com.alibaba.fastjson.JSONObject;
 
-import com.example.group4.service.WxMenuService;
-import com.example.group4.wx.*;
-import io.swagger.annotations.ApiImplicitParam;
+import com.example.group4.wx.common.update;
+import com.example.group4.wx.config.WxConfig;
+import com.example.group4.wx.config.WxConstants;
+import com.example.group4.wx.service.WxMenuService;
+import com.example.group4.wx.util.MSSQLUtil;
+import com.example.group4.wx.util.WxUtil;
 import org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;

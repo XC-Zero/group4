@@ -1,6 +1,7 @@
-package com.example.group4.wx;
+package com.example.group4.wx.util;
 
-import com.example.group4.util.SHA1;
+import com.example.group4.wx.config.WxConfig;
+import com.example.group4.wx.config.WxConstants;
 import com.google.zxing.BarcodeFormat;
 import com.google.zxing.EncodeHintType;
 import com.google.zxing.MultiFormatWriter;
@@ -293,7 +294,7 @@ public class WxUtil {
 	 */
 	private static boolean isResponseSignatureValid(final Map<String, String> reqData,String signType) throws Exception {
 		// 返回数据的签名方式和请求中给定的签名方式是一致的
-		return isSignatureValid(reqData,WxConfig.key,signType);
+		return isSignatureValid(reqData, WxConfig.key,signType);
 	}
 
 	/**

@@ -1,4 +1,4 @@
-package com.example.group4.service;
+package com.example.group4.wx.service;
 
 
 public interface WxMenuService {

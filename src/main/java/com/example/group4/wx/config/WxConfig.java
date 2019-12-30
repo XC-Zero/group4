@@ -1,4 +1,4 @@
-package com.example.group4.wx;
+package com.example.group4.wx.config;
 
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Component;

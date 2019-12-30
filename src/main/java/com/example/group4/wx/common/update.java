@@ -1,4 +1,6 @@
-package com.example.group4.wx;
+package com.example.group4.wx.common;
+
+import com.example.group4.wx.util.MSSQLUtil;
 
 import java.sql.Connection;
 import java.sql.DriverManager;

@@ -1,10 +1,10 @@
-package com.example.group4.http;
+package com.example.group4.wx.http;
 
 import com.alibaba.fastjson.JSONObject;
 
-import com.example.group4.wx.WxConfig;
-import com.example.group4.wx.WxConstants;
-import com.example.group4.wx.WxUtil;
+import com.example.group4.wx.config.WxConfig;
+import com.example.group4.wx.config.WxConstants;
+import com.example.group4.wx.util.WxUtil;
 import org.apache.commons.lang3.StringUtils;
 
 import javax.net.ssl.HttpsURLConnection;
