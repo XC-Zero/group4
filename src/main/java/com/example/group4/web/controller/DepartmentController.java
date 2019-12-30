@@ -2,7 +2,6 @@ package com.example.group4.web.controller;
 
 import com.example.group4.bean.Department;
 import com.example.group4.service.IDepartmentService;
-import com.example.group4.service.Impl.DepartmentServiceImpl;
 import com.example.group4.util.Message;
 import com.example.group4.util.MessageUtil;
 import io.swagger.annotations.Api;
