@@ -5,13 +5,31 @@
         <selectKey keyColumn="id" keyProperty="id" resultType="int" order="AFTER">
             SELECT LAST_INSERT_ID()
         </selectKey>
-       insert into briup_question values (#{id},#{name},#{type})
+        insert into briup_question values (#{id},#{name},#{type})
 
     </insert>
+
     <update id="updateOrAdd">
 
-        update briup_question set  name=#{name},type =#{type} where id=#{id}
+        update briup_question set name=#{name},type =#{type}where id=#{id}
 
     </update>
+    <select id="searchQ">
+select briup_question
 
+    </select>
+
+    <resultMap id="aaa" type="com.example.group4.bean.ex.QuestionEX">
+        <id column="id" property="id"></id>
+        <id column="name" property="name"></id>
+        <id column="type" property="type"></id>
+        <collection property="options" column="id" ofType="com.example.group4.bean.Options" select="selectOptions"></collection>
+    </resultMap>
+
+    <select id="searchQuestions" resultMap="aaa">
+        select * from briup_question where name like word
+    </select>
+    <select id="selectOptions" resultType="com.example.group4.bean.Options">
+        select * from briup_options where question_id = #{id}
+    </select>
 </mapper>

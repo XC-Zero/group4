@@ -9,10 +9,7 @@ import com.example.group4.util.Message;
 import com.example.group4.util.MessageUtil;
 import io.swagger.annotations.Api;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -34,5 +31,10 @@ public class QuestionController {
     public Message updataOrAdd(Question question, @RequestBody List<OptionsEX> options){
         questionService.updateOrAdd(question,options);
         return MessageUtil.success();
+    }
+
+    @GetMapping("/search")
+    public Message Search(String word){
+        return MessageUtil.success(questionService.searchQ(word));
     }
 }

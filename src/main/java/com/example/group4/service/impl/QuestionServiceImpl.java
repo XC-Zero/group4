@@ -1,7 +1,11 @@
 package com.example.group4.service.impl;
 
+import com.example.group4.bean.Options;
+import com.example.group4.bean.OptionsExample;
 import com.example.group4.bean.Question;
 import com.example.group4.bean.ex.OptionsEX;
+import com.example.group4.bean.ex.QuestionEX;
+import com.example.group4.mapper.OptionsMapper;
 import com.example.group4.mapper.QuestionMapper;
 import com.example.group4.mapper.ex.OptionEXMapper;
 import com.example.group4.mapper.ex.QuestionEXMapper;
@@ -20,6 +24,8 @@ public class QuestionServiceImpl implements IQuestionService{
     private QuestionEXMapper questionEXMapper;
     @Autowired
     private OptionEXMapper optionEXMapper;
+    @Autowired
+    private OptionsMapper optionsMapper;
 
     @Override
     public void addQ(Question question, List<OptionsEX> options) throws RuntimeException {
@@ -44,26 +50,34 @@ public class QuestionServiceImpl implements IQuestionService{
     }
 
     @Override
-    public void updateOrAdd(Question question, List<OptionsEX> options) throws RuntimeException {
+    public void updateOrAdd(Question question,List<OptionsEX> options) throws RuntimeException {
+        if (question==null){
+            throw new RuntimeException("参数为空");
+        }
+        if (question.getId()==null){
+            questionEXMapper.add(question);
+            for (OptionsEX option : options) {
+                option.setQuestion(question);
+                optionEXMapper.addOption(option);
+            }
+        }else {
+            questionEXMapper.updateOrAdd(question);
+            OptionsExample example=new OptionsExample();
+            example.createCriteria().andQuestionIdEqualTo(question.getId());
+            optionsMapper.deleteByExample(example);
+
+            for (OptionsEX option : options) {
+                option.setQuestion(question);
+                optionEXMapper.addOption(option);
+            }
+
+        }
 
     }
-
-    /*@Override
-    public void updateOrAdd(Question questionEX) throws RuntimeException {
-        if(questionEX==null){
-            new RuntimeException("参数为空");
-        }
-        if(questionEX.getId()==null){
-            questionEXMapper.add(questionEX);
-        }
-        else {
-            //questionEXMapper.updateQuestion(questionEX);
-        }
-    }*/
 
     @Override
-    public void searchQ(String key, String word) throws RuntimeException {
-
+    public List<QuestionEX> searchQ(String word) throws RuntimeException {
+        word = "%"+word+"%";
+        return questionEXMapper.searchQuestions(word);
     }
-
 }

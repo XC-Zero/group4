@@ -6,7 +6,8 @@
     </insert>
 
     <update id="updateOrAdd">
-        update briup_options set name =#{name},label=#{label} where id=#{question.id}   </update>
+        update briup_options set name =#{name},label=#{label} where question_id=#{question.id}
+</update>
 </mapper>
 
 
