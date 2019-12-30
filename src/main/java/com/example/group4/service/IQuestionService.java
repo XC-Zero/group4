@@ -15,4 +15,6 @@ public interface IQuestionService {
     List<QuestionEX> searchQ(String word) throws RuntimeException;
 
     QuestionEX selectById(int id);
+
+    List<QuestionEX> selectAll();
 }

@@ -39,8 +39,24 @@ public class QuestionController {
         return MessageUtil.success(questionService.selectById(id));
     }
 
+    @GetMapping("/selectAll")
+    public Message selectAll(){
+        return MessageUtil.success(questionService.selectAll());
+    }
+
     @GetMapping("/search")
     public Message Search(String word){
         return MessageUtil.success(questionService.searchQ(word));
+    }
+
+    @GetMapping("/delAny")
+    public Message delAny(int[] ids){
+        questionService.deleteMore(ids);
+        return MessageUtil.success();
+    }
+    @GetMapping("/delById")
+    public Message delById(int id){
+        questionService.deleteById(id);
+        return MessageUtil.success();
     }
 }

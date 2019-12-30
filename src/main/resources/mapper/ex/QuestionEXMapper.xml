@@ -29,7 +29,22 @@ select briup_question
     <select id="searchQuestions" resultMap="aaa">
         select * from briup_question where name like word
     </select>
-    <select id="selectOptions" resultType="com.example.group4.bean.Options">
+    <resultMap id="bbb" type="com.example.group4.bean.Options">
+        <id column="id" property="id"></id>
+        <result property="label" column="label"></result>
+        <result property="name" column="name"></result>
+        <result property="score" column="score"></result>
+        <result property="questionId" column="question_id"></result>
+    </resultMap>
+    <select id="selectOptions" resultMap="bbb">
         select * from briup_options where question_id = #{id}
+    </select>
+
+    <select id="selectAll" resultMap="aaa">
+        select * from briup_question
+    </select>
+
+    <select id="selectById" resultMap="aaa">
+        select * from briup_question where id=#{id}
     </select>
 </mapper>

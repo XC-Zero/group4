@@ -11,4 +11,8 @@ public interface QuestionEXMapper {
     void search(int id);
 
     List<QuestionEX> searchQuestions(String word);
+
+    List<QuestionEX> selectAll();
+
+    QuestionEX selectById(int id);
 }
