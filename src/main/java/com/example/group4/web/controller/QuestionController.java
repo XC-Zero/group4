@@ -3,6 +3,7 @@ package com.example.group4.web.controller;
 
 import com.example.group4.bean.Question;
 import com.example.group4.bean.ex.OptionsEX;
+import com.example.group4.bean.ex.QuestionEX;
 import com.example.group4.service.IOptionService;
 import com.example.group4.service.IQuestionService;
 import com.example.group4.util.Message;
@@ -31,6 +32,11 @@ public class QuestionController {
     public Message updataOrAdd(Question question, @RequestBody List<OptionsEX> options){
         questionService.updateOrAdd(question,options);
         return MessageUtil.success();
+    }
+
+    @GetMapping("/selectById")
+    public Message selectById(int id){
+        return MessageUtil.success(questionService.selectById(id));
     }
 
     @GetMapping("/search")

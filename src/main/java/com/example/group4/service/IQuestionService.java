@@ -13,4 +13,6 @@ public interface IQuestionService {
     void deleteMore(int[] ids)throws RuntimeException;
     void updateOrAdd(Question question,List<OptionsEX> options)throws RuntimeException;
     List<QuestionEX> searchQ(String word) throws RuntimeException;
+
+    QuestionEX selectById(int id);
 }
