@@ -30,4 +30,9 @@ public class QuestionController {
         questionService.addQ(question,options);
         return MessageUtil.success();
     }
+    @PostMapping("updateOrAdd")
+    public Message updataOrAdd(Question question, @RequestBody List<OptionsEX> options){
+        questionService.updateOrAdd(question,options);
+        return MessageUtil.success();
+    }
 }
