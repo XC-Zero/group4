@@ -6,5 +6,29 @@ spring:
     password: CJMcjm136466!
     url: jdbc:mysql://test-group4.mysql.rds.aliyuncs.com:9988/group4_2?useunicode=true;&characterEncoding=utf8
     driver-class-name: com.mysql.cj.jdbc.Driver
+#  微信支付接口配置
+  mvc:
+    view:
+      prefix: /templates
+      suffix: .html
+    static-path-pattern: /**
+  thymeleaf:
+    cache: false
 mybatis:
  mapper-locations: mapper/**/*Mapper*.xml
+intranet:
+  penetrateUrl: www.xccjm.fun:38324
+wx:
+  appID: wx1046df29d9aa8427
+  mchID: 1413626902
+  key: lkjhgfdsa1234567890poiuytrewqZXC
+#  回调网址
+  unifiedorder:
+    notifyUrl: ${intranet.penetrateUrl}/wxPay/unifiedorderNotify
+
+https:
+  #连接超时时间
+  connectionTimeout: 15000
+  readTimeout: 15000
+
+
