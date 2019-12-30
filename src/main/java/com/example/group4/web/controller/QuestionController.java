@@ -27,11 +27,7 @@ public class QuestionController {
 
     @PostMapping("/addQuestion")
     public Message addQuestion(Question question, @RequestBody List<OptionsEX> options){
-        questionService.addQ(question);
-        for (OptionsEX option : options) {
-            option.setQuestion(question);
-            optionService.addOption(option);
-        }
+        questionService.addQ(question,options);
         return MessageUtil.success();
     }
 }
