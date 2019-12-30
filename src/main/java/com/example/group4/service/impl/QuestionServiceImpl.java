@@ -44,6 +44,11 @@ public class QuestionServiceImpl implements IQuestionService{
     }
 
     @Override
+    public void updateOrAdd(Question question, List<OptionsEX> options) throws RuntimeException {
+
+    }
+
+    /*@Override
     public void updateOrAdd(Question questionEX) throws RuntimeException {
         if(questionEX==null){
             new RuntimeException("参数为空");
@@ -52,9 +57,9 @@ public class QuestionServiceImpl implements IQuestionService{
             questionEXMapper.add(questionEX);
         }
         else {
-            questionEXMapper.updateQuestion(questionEX);
+            //questionEXMapper.updateQuestion(questionEX);
         }
-    }
+    }*/
 
     @Override
     public void searchQ(String key, String word) throws RuntimeException {

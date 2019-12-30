@@ -18,6 +18,8 @@ public class QuestionnaireEX {
 
     private int a[];
 
+
+
     public int[] getA() {
         return a;
     }

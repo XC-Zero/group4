@@ -32,4 +32,16 @@ public class QuestionnaireController {
         return MessageUtil.success();
     }
 
+    @GetMapping("/selectQuestion")
+    @ApiOperation(value = "根据问卷ID只能查看问题")
+    public Message selectQuestion(int id){
+        return MessageUtil.success(questionnaireService.selectQuestion(id));
+    }
+
+    @GetMapping("/selectQuestionAndOption")
+    @ApiOperation(value = "根据问卷ID查询题目和选项")
+    public Message selectQuestionAndOption(int id){
+        return MessageUtil.success(questionnaireService.selectQuestionAndOption(id));
+    }
+
 }

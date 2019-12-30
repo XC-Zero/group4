@@ -7,11 +7,22 @@
         </selectKey>
         insert into briup_questionnaire values (#{id},#{name},#{description},#{date})
     </insert>
-    <insert id="insertqqn">
-        insert into btiup_qqn values(#{a},#{qnid})
-    </insert>
-    <update id="updateQuestionnaireEX">
-        update briup_questionnaire set name=#{name},description=#{description},date=#{date} where id=#{id}
-    </update>
 
+   <select id="selectQuestion" resultType="com.example.group4.bean.Question">
+       select b.* from briup_qqn a,briup_question b where a.questionnaire_id=#{id} and a.question_id=b.id
+   </select>
+
+
+    <resultMap id="aaa" type="com.example.group4.bean.ex.QuestionEX">
+        <id column="id" property="id"></id>
+        <result column="name" property="name"></result>
+        <result column="type" property="type"></result>
+        <collection property="options" column="id" ofType="com.example.group4.bean.Options" select="selectOption"></collection>
+    </resultMap>
+    <select id="selectQuestionAndOption" resultMap="aaa">
+         select b.* from briup_qqn a,briup_question b where a.questionnaire_id=#{id} and a.question_id=b.id
+    </select>
+    <select id="selectOption" resultType="com.example.group4.bean.Options">
+        select a.* from briup_options a where a.question_id=#{id}
+    </select>
 </mapper>

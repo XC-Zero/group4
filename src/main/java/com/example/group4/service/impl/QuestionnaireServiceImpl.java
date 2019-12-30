@@ -3,6 +3,7 @@ package com.example.group4.service.impl;
 import com.example.group4.bean.Qqn;
 import com.example.group4.bean.Question;
 import com.example.group4.bean.Questionnaire;
+import com.example.group4.bean.ex.QuestionEX;
 import com.example.group4.bean.ex.QuestionnaireEX;
 import com.example.group4.mapper.QqnMapper;
 import com.example.group4.mapper.QuestionnaireMapper;
@@ -10,6 +11,8 @@ import com.example.group4.mapper.ex.QuestionnaireEXMapper;
 import com.example.group4.service.IQuestionnaireService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+
+import java.util.List;
 
 @Service
 public class QuestionnaireServiceImpl implements IQuestionnaireService {
@@ -57,5 +60,15 @@ public class QuestionnaireServiceImpl implements IQuestionnaireService {
 
             }
         }
+    }
+
+    @Override
+    public List<Question> selectQuestion(int id) {
+        return questionnaireEXMapper.selectQuestion(id);
+    }
+
+    @Override
+    public List<QuestionEX> selectQuestionAndOption(int id) {
+        return questionnaireEXMapper.selectQuestionAndOption(id);
     }
 }
