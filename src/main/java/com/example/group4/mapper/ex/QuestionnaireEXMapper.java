@@ -4,7 +4,7 @@ import com.example.group4.bean.Questionnaire;
 import com.example.group4.bean.ex.QuestionnaireEX;
 
 public interface QuestionnaireEXMapper {
-    void insertQuestionnaireEX(QuestionnaireEX questionnaireEX);
+    void insertQuestionnaire(Questionnaire questionnaire);
     void updateQuestionnaireEX(QuestionnaireEX questionnaireEX);
     void insertqqn(int a,int qnid);
 }

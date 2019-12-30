@@ -19,8 +19,15 @@ public class QuestionnaireController {
     private QuestionnaireServiceImpl questionnaireService;
 
     @GetMapping("/insertQuestionnaireEX")
-    @ApiOperation(value = "修改或者添加问卷")
+    @ApiOperation(value = "添加问卷")
     public Message saveQuestionnaire(QuestionnaireEX questionnaireEX){
+        questionnaireService.saveOrUpdata(questionnaireEX);
+        return MessageUtil.success();
+    }
+
+    @GetMapping("/updateQuestionnaireEX")
+    @ApiOperation(value = "修改问卷")
+    public Message updateQuestionnaire(QuestionnaireEX questionnaireEX){
         questionnaireService.saveOrUpdata(questionnaireEX);
         return MessageUtil.success();
     }

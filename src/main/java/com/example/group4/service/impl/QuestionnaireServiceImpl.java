@@ -16,6 +16,7 @@ public class QuestionnaireServiceImpl implements IQuestionnaireService {
 
     @Autowired
     private QuestionnaireEXMapper questionnaireEXMapper;
+
     @Autowired
     private QuestionnaireMapper questionnaireMapper;
     @Autowired
@@ -27,7 +28,7 @@ public class QuestionnaireServiceImpl implements IQuestionnaireService {
             questionnaire.setName(questionnaireEX.getName());
             questionnaire.setDate(questionnaireEX.getDate());
             questionnaire.setDescription(questionnaireEX.getDescription());
-            questionnaireMapper.insert(questionnaire);
+            questionnaireEXMapper.insertQuestionnaire(questionnaire);
             for(int a:questionnaireEX.getA()){
                 Qqn qqn = new Qqn();
                 qqn.setQuestionId(a);
@@ -36,15 +37,24 @@ public class QuestionnaireServiceImpl implements IQuestionnaireService {
             }
         }else{
             Questionnaire questionnaire1 = new Questionnaire();
+            questionnaire1.setId(questionnaireEX.getId());
             questionnaire1.setName(questionnaireEX.getName());
             questionnaire1.setDate(questionnaireEX.getDate());
             questionnaire1.setDescription(questionnaireEX.getDescription());
             questionnaireMapper.updateByPrimaryKey(questionnaire1);
             for(int a:questionnaireEX.getA()){
-                Qqn qqn = new Qqn();
-                qqn.setQuestionId(a);
-                qqn.setQuestionnaireId(questionnaire1.getId());
-                qqnMapper.updateByPrimaryKey(qqn);
+                if(qqnMapper.selectByPrimaryKey(a)==null){
+                    Qqn qqn = new Qqn();
+                    qqn.setQuestionId(a);
+                    qqn.setQuestionnaireId(questionnaire1.getId());
+                    qqnMapper.insert(qqn);
+                }else{
+                    Qqn qqn = new Qqn();
+                    qqn.setQuestionId(a);
+                    qqn.setQuestionnaireId(questionnaire1.getId());
+                    qqnMapper.updateByPrimaryKey(qqn);
+                }
+
             }
         }
     }
