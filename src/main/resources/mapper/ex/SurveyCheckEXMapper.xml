@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.example.group4.mapper.ex.QueryCheckEXMapper">
+    <resultMap id="all" type="com.example.group4.bean.ex.SurveyCheckEX">
+        <id column="id" property="id"></id>
+        <result column="status" property="status"></result>
+        <result column="code" property="code"></result>
+        <result column="surveyday" property="surveyday"></result>
+        <result column="average" property="average"></result>
+        <association property="departmentname" column="department_id" select="depart1"></association>
+        <association property="coursename" column="course_id" select="course1"></association>
+        <association property="clazzname" column="clazz1" select="clazz1"></association>
+        <association property="username" column="user_id" select="user1"></association>
+        <association property="questionnairename" column="questionnaire_id" select="questionnaire1"></association>
+        <collection property="question" column="questionnaire_id" ofType="com.example.group4.bean.Question" select="questioncheck"></collection>
+    </resultMap>
+
+    <select id="selectAll" resultMap="all">
+        select * from briup_survey
+    </select>
+    <select id="depart1" resultType="String">
+        select name from briup_department where id=#{id}
+    </select>
+    <select id="course1" resultType="String">
+        select name from briup_course where id=#{id}
+    </select>
+    <select id="clazz1" resultType="String">
+        select name from briup_clazz where id=#{id}
+    </select>
+    <select id="user1" resultType="String">
+        select name from briup_teacher where id=#{id}
+    </select>
+    <select id="questionnaire1" resultType="String">
+        select name from briup_questionnaire where id=#{id}
+    </select>
+
+    <select id="questioncheck" resultMap="questionAll">
+        select question_id from briup_qqn where questionnaire_id=#{questionnaire_id}
+    </select>
+
+    <resultMap id="questionAll" type="com.example.group4.bean.ex.SurveyCheckEX">
+        <collection property="question" column="question_id"  select="findQ"></collection>
+    </resultMap>
+
+    <select id="findQ" resultType="com.example.group4.bean.Question">
+        select * from briup_question where id=#{id}
+    </select>
+</mapper>
