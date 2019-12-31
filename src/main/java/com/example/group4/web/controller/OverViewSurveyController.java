@@ -53,4 +53,11 @@ public class OverViewSurveyController {
         surveyResult.updateCode(id,tt);
         return MessageUtil.success(tt);
     }
+
+    @GetMapping("/GameOver")
+    @ApiOperation(value = "课调结束")
+    public Message GameOver(int id){
+        surveyResult.GameOver(id);
+        return MessageUtil.success("课调结束");
+    }
 }

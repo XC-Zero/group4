@@ -33,4 +33,9 @@ public class SurveyResultImpl implements ISurveyResultService {
     public void updateCode(int id, long code) {
         surveyResultEXMapper.updateCode(id,code);
     }
+
+    @Override
+    public void GameOver(int id) {
+        surveyResultEXMapper.GameOver(id);
+    }
 }

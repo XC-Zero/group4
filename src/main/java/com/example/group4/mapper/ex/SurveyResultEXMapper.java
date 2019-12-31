@@ -8,6 +8,6 @@ public interface SurveyResultEXMapper {
     List<SurveyResultEX> findAll();
 
     List<SurveyResultEX>selectByWord(String word);
-
+    void GameOver(int id);
     void updateCode(int id,long code);
 }

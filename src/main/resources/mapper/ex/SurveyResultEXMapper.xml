@@ -52,6 +52,9 @@
 
 
     <update id="updateCode">
-        update briup_survey set code=#{code} where id=#{id}
+        update briup_survey set code=#{code},status="开启" where id=#{id}
+    </update>
+    <update id="GameOver">
+        update briup_survey set status="结束",code=0000 where id=#{id}
     </update>
 </mapper>
