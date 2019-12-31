@@ -51,6 +51,6 @@ public class OverViewSurveyController {
         long tt=(Integer.parseInt(four)*date.getTime())%10000;
         System.out.println(tt);
         surveyResult.updateCode(id,tt);
-        return MessageUtil.success();
+        return MessageUtil.success(tt);
     }
 }
