@@ -1,6 +1,7 @@
 package com.example.group4.service.impl;
 
 import com.example.group4.bean.ex.SurveyResultEX;
+import com.example.group4.mapper.SurveyMapper;
 import com.example.group4.mapper.ex.SurveyResultEXMapper;
 import com.example.group4.service.ISurveyResultService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -12,6 +13,7 @@ import java.util.List;
 public class SurveyResultImpl implements ISurveyResultService {
     @Autowired
     private SurveyResultEXMapper surveyResultEXMapper;
+
 
     @Override
     public List<SurveyResultEX> findAll() {
@@ -35,7 +37,7 @@ public class SurveyResultImpl implements ISurveyResultService {
     }
 
     @Override
-    public void GameOver(int id) {
-        surveyResultEXMapper.GameOver(id);
+    public void GameOver(int id) throws RuntimeException{
+            surveyResultEXMapper.GameOver(id);
     }
 }

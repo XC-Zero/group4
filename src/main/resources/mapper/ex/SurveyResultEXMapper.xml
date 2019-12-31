@@ -45,8 +45,12 @@
 
 
     <select id="selectByWord" resultMap="aaa">
-        select * from briup_survey
-        where questionnaire_id in (select id from briup_questionnaire where name like #{word})
+        select a.* from briup_survey a
+        where a.clazz_id in (select id from briup_clazz where name like #{word})
+        or a.course_id in (select id from briup_course where name like #{word})
+        or a.department_id in (select id from briup_department where name like #{word})
+        or a.questionnaire_id in(select id from briup_questionnaire where name like #{word})
+        or a.user_id in (select id from briup_teacher where name like #{word})
     </select>
 
 
@@ -55,6 +59,6 @@
         update briup_survey set code=#{code},status="开启" where id=#{id}
     </update>
     <update id="GameOver">
-        update briup_survey set status="结束",code=0000 where id=#{id}
+        update briup_survey set status="结束" where id=#{id}
     </update>
 </mapper>
