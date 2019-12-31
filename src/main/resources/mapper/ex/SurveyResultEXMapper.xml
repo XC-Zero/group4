@@ -14,6 +14,9 @@
                      column="course_id" select="selectcoursename"></association>
         <association property="username"
                      column="user_id" select="selectusername"></association>
+
+        <association property="clazzname"
+                     column="clazz_id" select="selectclazzname"></association>
         <association property="questionnairename"
                      column="questionnaire_id" select="selectcquestionnairename"></association>
     </resultMap>
@@ -22,53 +25,33 @@
     <select id="findAll" resultMap="aaa">
         select * from briup_survey
     </select>
-
-
-    <select id="selectById" resultMap="aaa">
-        select * from briup_survey where department_id=#{id}
-        or course_id=#{id}
-        or clazz_id=#{id}
-        or user_id=#{id}
-        or questionnaire_id=#{id}
+    <select id="selectclazzname" resultType="String">
+        select name from briup_clazz where id=#{clazz_id}
     </select>
-
-    <select id="selectByDepartment" resultType="int">
-        select id from briup_department where name like #{word}
-    </select>
-    <select id="selectByCourse" resultType="int" >
-        select id from briup_course where name like #{word}
-    </select>
-    <select id="selectByClass" resultType="int" >
-        select id from briup_clazz  where name like #{word}
-    </select>
-    <select id="selectByUser" resultType="int">
-        select id from briup_teacher where name like #{word}
-    </select>
-    
     <select id="selectdepartmentname" resultType="String">
         select name from briup_department where id=#{department_id}
     </select>
-
-
     <select id="selectcoursename" resultType="String">
         select name from briup_course where id=#{course_id}
     </select>
-
-
     <select id="selectusername" resultType="String">
         select name from briup_teacher where id=#{user_id}
     </select>
-
-
     <select id="selectcquestionnairename" resultType="String">
         select name from briup_questionnaire where id=#{questionnaire_id}
     </select>
 
 
+
+
     <select id="selectByWord" resultMap="aaa">
-        select a.* from briup_survey a,briup_course b,briup_teacher c,briup_questionnaire d,briup_department e,briup_clazz f
-        where
-        b.name like #{word} or c.name like #{word} or d.name like #{word} or e.name like #{word} or f.name like #{word}
-        and a.department_id=e.id and a.course_id=b.id and a.clazz_id=f.id and a.user_id=c.id and a.questionnaire_id=d.id
+        select * from briup_survey
+        where questionnaire_id in (select id from briup_questionnaire where name like #{word})
     </select>
+
+
+
+    <update id="updateCode">
+        update briup_survey set code=#{code} where id=#{id}
+    </update>
 </mapper>

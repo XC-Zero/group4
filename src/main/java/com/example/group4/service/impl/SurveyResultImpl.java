@@ -28,4 +28,9 @@ public class SurveyResultImpl implements ISurveyResultService {
             return surveyResultEXMapper.selectByWord(word);
         }
     }
+
+    @Override
+    public void updateCode(int id, long code) {
+        surveyResultEXMapper.updateCode(id,code);
+    }
 }

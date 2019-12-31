@@ -7,5 +7,5 @@ import java.util.List;
 public interface ISurveyResultService {
     List<SurveyResultEX>findAll();
     List<SurveyResultEX>selectByWord(String word);
-
+    void updateCode(int id, long code);
 }

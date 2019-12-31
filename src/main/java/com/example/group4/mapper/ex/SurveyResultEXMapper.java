@@ -6,11 +6,8 @@ import java.util.List;
 
 public interface SurveyResultEXMapper {
     List<SurveyResultEX> findAll();
-    List<SurveyResultEX>selectById(List<Integer> a);
-    List<Integer>selectByDepartment(String word);
-    List<Integer>selectByClass(String word);
-    List<Integer>selectByCourse(String word);
-    List<Integer>selectByUser(String word);
 
     List<SurveyResultEX>selectByWord(String word);
+
+    void updateCode(int id,long code);
 }
