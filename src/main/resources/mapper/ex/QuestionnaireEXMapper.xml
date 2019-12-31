@@ -11,13 +11,6 @@
    <select id="selectQuestion" resultType="com.example.group4.bean.Question">
        select b.* from briup_qqn a,briup_question b where a.questionnaire_id=#{id} and a.question_id=b.id
    </select>
-    <select id="selectByName" resultType="com.example.group4.bean.Questionnaire">
-        select * from briup_questionnaire where name like #{key}
-    </select>
-
-    <delete id="deleteById" >
-        delete from briup_questionnaire where id=#{id}
-    </delete>
 
 
     <resultMap id="aaa" type="com.example.group4.bean.ex.QuestionEX">

@@ -2,9 +2,8 @@ package com.example.group4.mapper;
 
 import com.example.group4.bean.Question;
 import com.example.group4.bean.QuestionExample;
-import org.apache.ibatis.annotations.Param;
-
 import java.util.List;
+import org.apache.ibatis.annotations.Param;
 
 public interface QuestionMapper {
     long countByExample(QuestionExample example);
@@ -28,5 +27,4 @@ public interface QuestionMapper {
     int updateByPrimaryKeySelective(Question record);
 
     int updateByPrimaryKey(Question record);
-
 }
