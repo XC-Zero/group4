@@ -16,7 +16,7 @@ import java.util.List;
 
 @RestController
 @RequestMapping("/Checksurvey")
-@Api(description = "调调管理")
+@Api(description = "客调审核")
 public class ChecksurveyController {
     @Autowired
     private IChecksurveyService checksurveyService;
