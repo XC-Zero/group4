@@ -44,6 +44,8 @@ public class OverViewSurveyController {
     public Message start(int id){
         if("开启".equals(surveyMapper.selectByPrimaryKey(id).getStatus())){
             return MessageUtil.success("操作错误，课调已开启");
+        }else if("审核".equals(surveyMapper.selectByPrimaryKey(id).getStatus())){
+            return MessageUtil.success("操作错误，课调已审核");
         }else{
             Set<Integer>set=new HashSet<Integer>();
             String four="";
@@ -69,7 +71,9 @@ public class OverViewSurveyController {
         if("开启".equals(surveyMapper.selectByPrimaryKey(id).getStatus())){
             surveyResult.GameOver(id);
             System.out.println("1"+surveyMapper.selectByPrimaryKey(id).getStatus()+"3");
-            return MessageUtil.success("课调结束");
+            return MessageUtil.success("操作成功，课调结束");
+        }else if("审核".equals(surveyMapper.selectByPrimaryKey(id).getStatus())){
+            return MessageUtil.success("操作错误，当前课调已审核");
         }else{
             System.out.println("1"+surveyMapper.selectByPrimaryKey(id).getStatus()+"3");
             return MessageUtil.success("操作错误，当前课调还未开启");
