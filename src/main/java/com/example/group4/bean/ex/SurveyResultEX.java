@@ -23,6 +23,14 @@ public class SurveyResultEX {
 
     private Double average;
 
+    @Override
+    public String toString() {
+        return "SurveyResultEX{" +
+                "clazzname='" + clazzname + '\'' +
+                ", average=" + average +
+                '}';
+    }
+
     public String getCoursename() {
         return coursename;
     }
