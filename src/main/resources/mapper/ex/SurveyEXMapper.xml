@@ -6,4 +6,9 @@
          delete from briup_survey where questionnaire_id=#{id}
     </delete>
 
+
+    <select id="selectAll" resultType="com.example.group4.bean.Survey">
+        select * from briup_survey
+    </select>
+
 </mapper>

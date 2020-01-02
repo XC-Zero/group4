@@ -1,5 +1,7 @@
 package com.example.group4.bean;
 
+import org.springframework.format.annotation.DateTimeFormat;
+
 import java.io.Serializable;
 import java.util.Date;
 
@@ -9,7 +11,7 @@ public class Survey implements Serializable {
     private String status;
 
     private Integer code;
-
+    @DateTimeFormat(pattern = "yyyy-MM-dd")
     private Date surveyday;
 
     private Integer departmentId;
