@@ -3,7 +3,8 @@ package com.example.group4.web.controller;
 import com.example.group4.bean.Questionnaire;
 import com.example.group4.bean.ex.QuestionEX;
 import com.example.group4.bean.ex.QuestionnaireEX;
-import com.example.group4.service.impl.QuestionnaireServiceImpl;
+
+import com.example.group4.service.Impl.QuestionnaireServiceImpl;
 import com.example.group4.util.Message;
 import com.example.group4.util.MessageUtil;
 import io.swagger.annotations.Api;

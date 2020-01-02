@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.example.group4.mapper.ex.TeacherEXMapper">
+
+
+
+    <select id="selectTeaByName" resultType="int">
+        select id from briup_teacher where name=#{name}
+    </select>
+
+
+
+
+</mapper>

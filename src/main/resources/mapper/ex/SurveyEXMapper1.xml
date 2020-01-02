@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.example.group4.mapper.ex.SurveyEXMapper1">
+
+    <select id="selectAll" resultType="com.example.group4.bean.Survey">
+        select * from briup_survey
+    </select>
+
+
+    <select id="selectByTeaId" resultType="com.example.group4.bean.Survey">
+        select * from briup_survey where user_id=#{id}
+    </select>
+
+    <delete id="deleteById">
+        delete from briup_survey where id=#{id}
+    </delete>
+
+
+
+
+
+
+    <select id="selectByPrimaryKey" resultMap="selectAll" >
+        select * from briup_survey where id=#{id}
+    </select>
+
+<!--
+    <select id="selectByPrimaryKey" resultType="com.example.group4.bean.ex.SurveyEX">
+        select * from briup_survey where id=#{id}
+    </select>
+-->
+
+
+
+
+
+
+    <resultMap id="selectAll" type="com.example.group4.bean.ex.SurveyEX">
+        <id column="id" property="id"></id>
+        <result column="status" property="status"></result>
+        <result column="code" property="code" />
+        <result column="surveyday" property="surveyday" />
+        <result column="department_id"  property="departmentId" />
+        <result column="course_id" property="courseId" />
+        <result column="clazz_id" property="clazzId" />
+        <result column="user_id" property="userId" />
+        <result column="questionnaire_id" property="questionnaireId" />
+        <result column="average" property="average" />
+        <association property="department" column="department_id" select="selectDepartmentName"></association>
+        <association property="course" column="course_id" select="selectCourseName"></association>
+        <association property="clazz" column="clazz_id" select="selectClazzName"></association>
+        <association property="teacher" column="user_id" select="selectTeacherName"></association>
+        <association property="questionnaire" column="questionnaire_id" select="selectQuestionnaireName"></association>
+    </resultMap>
+
+    <select id="displayAll" resultMap="selectAll">
+        select * from briup_survey
+    </select>
+
+    <select id="selectDepartmentName" resultType="com.example.group4.bean.Department">
+        select * from briup_department where id=#{id}
+    </select>
+
+    <select id="selectCourseName" resultType="com.example.group4.bean.Course">
+        select * from briup_course where id=#{id}
+    </select>
+
+    <select id="selectClazzName" resultType="com.example.group4.bean.Clazz">
+        select * from briup_clazz where id=#{id}
+    </select>
+
+    <select id="selectTeacherName" resultType="com.example.group4.bean.Teacher">
+        select * from briup_teacher where id=#{id}
+    </select>
+
+    <select id="selectQuestionnaireName" resultType="com.example.group4.bean.Questionnaire">
+        select * from briup_questionnaire where id=#{id}
+    </select>
+
+</mapper>
