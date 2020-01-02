@@ -18,7 +18,7 @@ public class AnalysisController {
     @GetMapping("/AllSurvey")
     @ApiOperation(value = "全部课调")
     public Message findAllSurvey(){
-        return MessageUtil.success(surveyResult.findAll());
+        return MessageUtil.success(surveyResult.findAllAnalysis());
     }
 
     @GetMapping("/SurveyAnalysis")
