@@ -35,5 +35,11 @@ public class ChecksurveyController {
         return MessageUtil.success("平均分是"+checksurveyService.average(id));
     }
 
+    @GetMapping
+    public Message check(int id){
+        checksurveyService.check(id);
+        return MessageUtil.success();
+    }
+
 
 }

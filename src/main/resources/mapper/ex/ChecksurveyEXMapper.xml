@@ -78,7 +78,7 @@
         select question_id from briup_qqn where questionnaire_id=#{id}
     </select>
 
-    <resultMap id="aaa1" type="com.example.group4.bean.ex.ChecksurveyREX">
+    <resultMap id="aaa1" type="com.example.group4.bean.ex.QuestionListEX">
         <association property="question" column="question_id" select="find"></association>
     </resultMap>
     <select id="find" resultType="com.example.group4.bean.Question">
@@ -124,6 +124,11 @@ select questionnaire_id from briup_survey where id=#{id}
     <select id="findS" resultType="Double">
          select AVG(score) from briup_options where question_id=#{id}
     </select>
+
+
+<update id="check" >
+    update briup_survey set status=#{status} where id=#{id}
+</update>
 
 
 

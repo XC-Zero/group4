@@ -10,4 +10,5 @@ public interface IChecksurveyService {
     List<ChecksurveyEX> findAll();
     List<ChecksurveyREX>findAllR();
     double average(int id);
+    void check(int id);
 }

@@ -1,7 +1,9 @@
 package com.example.group4.service.impl;
 
+import com.example.group4.bean.SurveyExample;
 import com.example.group4.bean.ex.ChecksurveyEX;
 import com.example.group4.bean.ex.ChecksurveyREX;
+import com.example.group4.mapper.SurveyMapper;
 import com.example.group4.mapper.ex.ChecksurveyEXMapper;
 import com.example.group4.service.IChecksurveyService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -13,6 +15,9 @@ import java.util.List;
 public class ChecksurveyServiceImpl implements IChecksurveyService {
     @Autowired
     private ChecksurveyEXMapper checksurveyEXMapper;
+    @Autowired
+    private SurveyMapper surveyMapper;
+
     @Override
     public List<ChecksurveyEX> findAll()throws RuntimeException {
         return checksurveyEXMapper.selectAll();
@@ -30,6 +35,12 @@ public class ChecksurveyServiceImpl implements IChecksurveyService {
         double a=checksurveyEX.getAverage();
         return a;
 
+    }
+
+    @Override
+    public void check(int id) {
+        String status="审核";
+checksurveyEXMapper.check(id,status);
     }
 
 }
