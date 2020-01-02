@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.example.group4.mapper.ex.SurveyResultEXMapper">
+    <resultMap id="aaa" type="com.example.group4.bean.ex.SurveyResultEX">
+        <id column="id" property="id"></id>
+        <result column="status" property="status"></result>
+        <result column="code" property="code"></result>
+        <result column="surveyday" property="surveyday"></result>
+        <result column="average" property="average"></result>
+        <association property="departmentname"
+                     column="department_id"
+                     select="selectdepartmentname"></association>
+        <association property="coursename"
+                     column="course_id" select="selectcoursename"></association>
+        <association property="username"
+                     column="user_id" select="selectusername"></association>
+
+        <association property="clazzname"
+                     column="clazz_id" select="selectclazzname"></association>
+        <association property="questionnairename"
+                     column="questionnaire_id" select="selectcquestionnairename"></association>
+    </resultMap>
+
+
+    <select id="findAll" resultMap="aaa">
+        select * from briup_survey
+    </select>
+    <select id="selectclazzname" resultType="String">
+        select name from briup_clazz where id=#{clazz_id}
+    </select>
+    <select id="selectdepartmentname" resultType="String">
+        select name from briup_department where id=#{department_id}
+    </select>
+    <select id="selectcoursename" resultType="String">
+        select name from briup_course where id=#{course_id}
+    </select>
+    <select id="selectusername" resultType="String">
+        select name from briup_teacher where id=#{user_id}
+    </select>
+    <select id="selectcquestionnairename" resultType="String">
+        select name from briup_questionnaire where id=#{questionnaire_id}
+    </select>
+
+
+
+
+    <select id="selectByWord" resultMap="aaa">
+        select a.* from briup_survey a
+        where a.clazz_id in (select id from briup_clazz where name like #{word})
+        or a.course_id in (select id from briup_course where name like #{word})
+        or a.department_id in (select id from briup_department where name like #{word})
+        or a.questionnaire_id in(select id from briup_questionnaire where name like #{word})
+        or a.user_id in (select id from briup_teacher where name like #{word})
+    </select>
+
+
+
+    <update id="updateCode">
+        update briup_survey set code=#{code},status="开启" where id=#{id}
+    </update>
+    <update id="GameOver">
+        update briup_survey set status="结束" where id=#{id}
+    </update>
+</mapper>

@@ -47,4 +47,6 @@ select briup_question
     <select id="selectById" resultMap="aaa">
         select * from briup_question where id=#{id}
     </select>
+
+
 </mapper>
