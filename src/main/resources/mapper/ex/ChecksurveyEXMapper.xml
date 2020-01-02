@@ -127,8 +127,11 @@ select questionnaire_id from briup_survey where id=#{id}
 
 
 <update id="check" >
-    update briup_survey set status=#{status} where id=#{id}
+    update briup_survey set status="审核" where id=#{id} and status="结束"
 </update>
+    <delete id="deleteA" >
+        delete  from briup_answer where id=#{id}
+    </delete>
 
 
 

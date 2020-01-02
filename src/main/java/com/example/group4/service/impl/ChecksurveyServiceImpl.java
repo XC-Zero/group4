@@ -39,8 +39,13 @@ public class ChecksurveyServiceImpl implements IChecksurveyService {
 
     @Override
     public void check(int id) {
-        String status="审核";
-checksurveyEXMapper.check(id,status);
+
+checksurveyEXMapper.check(id);
+    }
+
+    @Override
+    public void deleteA(int id) {
+        checksurveyEXMapper.deleteA(id);
     }
 
 }

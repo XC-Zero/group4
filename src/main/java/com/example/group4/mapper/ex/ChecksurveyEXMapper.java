@@ -10,5 +10,6 @@ public interface ChecksurveyEXMapper {
     List<ChecksurveyEX> selectAll();
     List<ChecksurveyREX> selectResult();
     ChecksurveyEX average(int id);
-    void  check(int id,String status);
+    void  check(int id);
+    void deleteA(int id);
 }
