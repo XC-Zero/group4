@@ -71,7 +71,7 @@
         select name from briup_course where id=#{id}
     </select>
     <select id="questionnaire1"  resultType="String">
-        select name from briup_question where id=#{id}
+        select name from briup_questionnaire where id=#{id}
     </select>
 
     <select id="questionR1" resultMap="aaa1">
