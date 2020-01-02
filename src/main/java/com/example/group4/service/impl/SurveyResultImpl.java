@@ -20,6 +20,11 @@ public class SurveyResultImpl implements ISurveyResultService {
         return surveyResultEXMapper.findAll();
     }
 
+    @Override
+    public List<SurveyResultEX> findAllAnalysis() {
+        return surveyResultEXMapper.findAllAnalysis();
+    }
+
 
     @Override
     public List<SurveyResultEX> selectByWord(String word) {

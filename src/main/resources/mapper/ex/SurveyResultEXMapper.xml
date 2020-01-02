@@ -20,7 +20,9 @@
         <association property="questionnairename"
                      column="questionnaire_id" select="selectcquestionnairename"></association>
     </resultMap>
-
+    <select id="findAllAnalysis" resultMap="aaa">
+        select * from briup_survey where status="审核"
+    </select>
 
     <select id="findAll" resultMap="aaa">
         select * from briup_survey
