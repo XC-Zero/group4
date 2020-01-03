@@ -11,11 +11,15 @@
         <association property="teacher" column="user_id" select="user"></association>
         <association property="clazz" column="clazz_id" select="clazz"></association>
         <association property="course" column="course_id" select="course"></association>
+<!--        <association property="questionnaire" column="questionnaire_id" select="questionnaire"></association>-->
         <association property="questionnaire" column="questionnaire_id" select="questionnaire"></association>
     </resultMap>
     <select id="selectAll" resultMap="all">
     select * from briup_survey
     </select>
+
+
+
     <select id="depart" resultType="com.example.group4.bean.Department">
     select * from briup_department where id=#{id}
 </select>
@@ -32,11 +36,51 @@
         select * from briup_question where id=#{id}
     </select>
 
+    <!--    能写一块就写一块 -->
+    <!--    <select id="">-->
+    <!--        select q.name qname(别名)。。。。。。。。。。。-->
+    <!--        from briup_survey s,briup_questionnaire q ,briup_-->
+    <!--        where s.questionnaire_id=q.id and-->
+    <!--        and-->
+    <!--    </select>-->
+    <!--    <select id="selectByWord" resultMap="aaa">-->
+    <!--        select a.* from briup_survey a-->
+    <!--        where a.clazz_id in (select id from briup_clazz where name like #{word})-->
+    <!--        or a.course_id in (select id from briup_course where name like #{word})-->
+    <!--        or a.department_id in (select id from briup_department where name like #{word})-->
+    <!--        or a.questionnaire_id in(select id from briup_questionnaire where name like #{word})-->
+    <!--        or a.user_id in (select id from briup_teacher where name like #{word})-->
+    <!--    </select>-->
+    <!--    <select id="sss" resultType="com.example.group4.bean.Question">-->
+    <!--        select * from briup_question q-->
+    <!--        where q.id in (select qn.question_id from briup_qqn qn where-->
+    <!--        qn.questionnaire_id =#{questionnaire_id}-->
+    <!--    </select>-->
+<!--    *********************************-->
 
 
 
 
 
+
+<!--    <resultMap id="allR" type="com.example.group4.bean.ex.ChecksurveyREX">-->
+<!--        <id column="id" property="id"></id>-->
+<!--        <result column="status" property="status"></result>-->
+<!--        <result column="code" property="code"></result>-->
+<!--        <result column="surveyday" property="surveyday"></result>-->
+<!--        <result column="average" property="average"></result>-->
+<!--        <association property="departmentname" column="department_id" select="depart1"></association>-->
+<!--        <association property="teachername" column="user_id" select="user1"></association>-->
+<!--        <association property="clazzname" column="clazz_id" select="clazz1"></association>-->
+<!--        <association property="coursename" column="course_id" select="course1"></association>-->
+<!--        <association property="questionnairename" column="questionnaire_id" select="questionnaire1"></association>-->
+<!--        <collection property="question" column="questionnaire_id" ofType="com.example.group4.bean.Question"-->
+<!--                    select="sss">-->
+<!--        </collection>-->
+<!--    </resultMap>-->
+<!--    <select id="selectResult" resultMap="allR">-->
+<!--    select * from briup_survey-->
+<!--    </select>-->
 
     <resultMap id="allR" type="com.example.group4.bean.ex.ChecksurveyREX">
         <id column="id" property="id"></id>
@@ -44,46 +88,67 @@
         <result column="code" property="code"></result>
         <result column="surveyday" property="surveyday"></result>
         <result column="average" property="average"></result>
-        <association property="departmentname" column="department_id" select="depart1"></association>
-        <association property="teachername" column="user_id" select="user1"></association>
-        <association property="clazzname" column="clazz_id" select="clazz1"></association>
-        <association property="coursename" column="course_id" select="course1"></association>
-        <association property="questionnairename" column="questionnaire_id" select="questionnaire1"></association>
+        <result property="departmentname" column="department_id" ></result>
+        <result property="teachername" column="user_id" ></result>
+        <result property="clazzname" column="clazz_id" ></result>
+        <result property="coursename" column="course_id" ></result>
+        <result property="questionnairename" column="questionnaire_id" ></result>
         <collection property="question" column="questionnaire_id" ofType="com.example.group4.bean.Question"
-                    select="questionR1">
+                    select="sss">
         </collection>
     </resultMap>
+
     <select id="selectResult" resultMap="allR">
-    select * from briup_survey
-    </select>
+    select s.*,
+    d.name,t.name,cl.name,co.name,q.name
+    from briup_survey s,briup_department d,briup_teacher t,
+    briup_clazz cl,briup_course co,briup_questionnaire q
+    where s.department_id=d.id and
+    s.user_id=t.id and
+    s.clazz_id=cl.id and
+    s.course_id=co.id and
+    s.questionnaire_id=q.id  </select>
+
+<!--    <select id="depart1" resultType="String">-->
+<!--    select name from briup_department where id=#{id}-->
+<!--</select>-->
+<!--    <select id="user1" resultType="String">-->
+<!--       select name from briup_teacher where id=#{id}-->
+<!--    </select>-->
+<!--    <select id="clazz1" resultType="String">-->
+<!--        select name from briup_clazz where id=#{id}-->
+<!--    </select>-->
+<!--    <select id="course1" resultType="String">-->
+<!--        select name from briup_course where id=#{id}-->
+<!--    </select>-->
+<!--    <select id="questionnaire1"  resultType="String">-->
+<!--        select name from briup_questionnaire where id=#{id}-->
+<!--    </select>-->
 
 
-    <select id="depart1" resultType="String">
-    select name from briup_department where id=#{id}
-</select>
-    <select id="user1" resultType="String">
-       select name from briup_teacher where id=#{id}
-    </select>
-    <select id="clazz1" resultType="String">
-        select name from briup_clazz where id=#{id}
-    </select>
-    <select id="course1" resultType="String">
-        select name from briup_course where id=#{id}
-    </select>
-    <select id="questionnaire1"  resultType="String">
-        select name from briup_questionnaire where id=#{id}
+<!--方法一*************************-->
+<!--    <select id="sss" resultType="com.example.group4.bean.Question">-->
+<!--        select q.* from briup_question q-->
+<!--        where q.id in (select qn.question_id from briup_qqn qn where-->
+<!--        qn.questionnaire_id =#{questionnaire_id})-->
+<!--    </select>-->
+<!--    方法二****************-->
+    <select id="sss" resultType="com.example.group4.bean.Question">
+        select q.*,qn.question_id from briup_question q,briup_qqn qn
+        where q.id=qn.question_id and qn.questionnaire_id =#{questionnaire_id}
     </select>
 
-    <select id="questionR1" resultMap="aaa1">
-        select question_id from briup_qqn where questionnaire_id=#{id}
-    </select>
-
-    <resultMap id="aaa1" type="com.example.group4.bean.ex.QuestionListEX">
-        <association property="question" column="question_id" select="find"></association>
-    </resultMap>
-    <select id="find" resultType="com.example.group4.bean.Question">
-        select * from briup_question where id=#{id}
-    </select>
+<!--    方法三-->
+<!--    <select id="questionR1" resultMap="aaa1">-->
+<!--        select question_id from briup_qqn where questionnaire_id=#{id}-->
+<!--    </select>-->
+<!--    <resultMap id="aaa1" type="com.example.group4.bean.ex.QuestionListEX">-->
+<!--        <association property="question" column="question_id" select="find"></association>-->
+<!--    </resultMap>-->
+<!--    <select id="find" resultType="com.example.group4.bean.Question">-->
+<!--        select * from briup_question where id=#{id}-->
+<!--    </select>-->
+<!--    **************************************-->
     <!--        <resultMap id="" type="">-->
     <!--            -->
     <!--          <result column="tname" property="teachername"></result>-->
@@ -133,6 +198,8 @@ select questionnaire_id from briup_survey where id=#{id}
         delete  from briup_answer where id=#{id}
     </delete>
 
+
+    <select id=""></select>
 
 
 
